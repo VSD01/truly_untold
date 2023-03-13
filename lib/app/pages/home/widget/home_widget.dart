@@ -17,17 +17,28 @@ class HomeWidget extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: Responsive.isMobile(context) ? 30 : 200),
-            child: Column(
+            child: Stack(
+              alignment: Alignment.bottomRight,
               children: [
-                ///Logo text here------
-                mainTitleWidget(),
+                Responsive.isMobile(context)
+                    ? Container()
+                    : Image.asset(
+                        'assets/logo.png',
+                        height: Dimens.twentyFive,
+                      ),
+                Column(
+                  children: [
+                    ///Logo text here------
+                    mainTitleWidget(),
 
-                ////Center image widget here------
-                centerImageWidget(),
+                    ////Center image widget here------
+                    centerImageWidget(),
 
-                ///Bio widget here---------
-                bioWidget(context),
-                Dimens.boxHeight10,
+                    ///Bio widget here---------
+                    bioWidget(context),
+                    Dimens.boxHeight10,
+                  ],
+                ),
               ],
             ),
           ),

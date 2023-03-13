@@ -31,11 +31,7 @@ Widget webAppBar() {
         children: [
           GestureDetector(
             onTap: () {
-              Get.dialog(
-                Container(
-                  color: Colors.white.withOpacity(0.5),
-                ),
-              );
+              Get.dialog(AboutScreen());
             },
             child: Text(
               'About',
@@ -77,49 +73,56 @@ Widget webAppBar() {
 }
 
 Widget mobileAppBarWidget() {
-  return Drawer(
-    backgroundColor: Colors.white.withOpacity(0.7),
-    child: Column(
-      children: [
-        GestureDetector(
-          onTap: () {
-            Get.dialog(
-              Container(
-                color: Colors.black.withOpacity(0.5),
-              ),
-            );
-          },
-          child: Text(
-            'About',
-            style: TextStyle(
-                color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+    decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.9),
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20), bottomRight: Radius.circular(20))),
+    child: Drawer(
+      width: Dimens.percentWidth(.40),
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Dimens.boxHeight20,
+          Container(
+              decoration: BoxDecoration(
+                  color: Colors.black, borderRadius: BorderRadius.circular(20)),
+              child: Image.asset('assets/logo.png')),
+          Dimens.boxHeight20,
+          GestureDetector(
+            onTap: () {
+              Get.back();
+              Get.dialog(
+                Container(
+                  color: Colors.black.withOpacity(0.5),
+                ),
+              );
+            },
+            child: Text(
+              'About',
+              style: AppTextStyle.black_17_700,
+            ),
           ),
-        ),
-        SizedBox(
-          width: 100,
-        ),
-        Text(
-          'Gallery',
-          style: TextStyle(
-              color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(
-          width: 100,
-        ),
-        Text(
-          'Blog',
-          style: TextStyle(
-              color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(
-          width: 100,
-        ),
-        Text(
-          'Contact',
-          style: TextStyle(
-              color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
-        ),
-      ],
+          Dimens.boxHeight15,
+          Text(
+            'Gallery',
+            style: AppTextStyle.black_17_700,
+          ),
+          Dimens.boxHeight15,
+          Text(
+            'Blog',
+            style: AppTextStyle.black_17_700,
+          ),
+          Dimens.boxHeight15,
+          Text(
+            'Contact',
+            style: AppTextStyle.black_17_700,
+          ),
+        ],
+      ),
     ),
   );
 }
