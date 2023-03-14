@@ -31,15 +31,36 @@ class GalleryWidget extends StatelessWidget {
                         Stack(
                           children: [
                             Container(
+                              
                               height: Dimens.percentHeight(.65),
                               width: Get.width,
                             ),
                             Container(
+                               color: Color(0xff0c1114),
                               height: Dimens.percentHeight(.50),
                               width: Get.width,
-                              child: Image.network(
-                                'https://images.unsplash.com/photo-1503395200327-a2ebe1d907b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHw%3D&w=1000&q=80',
-                                fit: BoxFit.cover,
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Image.asset(
+                                      'assets/side3.jpg',
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                    
+                                    
+                                      child: Image.asset('assets/logo.png',height: Get.height*0.20,),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Image.asset(
+                                      'assets/side2.jpg',
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             Positioned(
@@ -51,13 +72,7 @@ class GalleryWidget extends StatelessWidget {
                                       horizontal: Responsive.isMobile(context)
                                           ? 30
                                           : 200),
-                                  child: Row(
-                                    children: [
-                                      profileAvatar(),
-                                      Dimens.boxWidth15,
-                                      profileAvatar(),
-                                    ],
-                                  )),
+                                  child: profileAvatar()),
                             ),
                             Padding(
                               padding: EdgeInsets.only(right: 30, top: 30),
@@ -93,7 +108,7 @@ Widget profileAvatar() {
     child: Container(
       decoration: BoxDecoration(
         image: DecorationImage(image: AssetImage('assets/mine.png')),
-        color: Colors.red,
+        color: Colors.black,
         border: Border.all(color: Color(0xffcccccc), width: 5),
         shape: BoxShape.circle,
       ),
