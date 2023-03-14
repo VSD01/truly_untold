@@ -6,6 +6,7 @@ class HomeController extends GetxController
     with GetSingleTickerProviderStateMixin {
   Animation<double>? animation;
   AnimationController? controller;
+  var drawerPageKey = GlobalKey<ScaffoldState>();
 
   @override
   void onInit() {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
 
-class AboutWidget extends StatelessWidget {
-  const AboutWidget({super.key});
+class ContactWidget extends StatelessWidget {
+  const ContactWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class AboutWidget extends StatelessWidget {
                                       .openDrawer();
                                 },
                                 child: Icon(Icons.cancel_rounded))),
-                        webProfileSection(context),
+                        webContactSection(context),
                         GestureDetector(
                           onTap: () {
                             Get.back();
@@ -51,13 +51,13 @@ class AboutWidget extends StatelessWidget {
                             color: Colors.transparent,
                           ),
                         ),
-                        webProfileSection(context),
+                        webContactSection(context),
                       ],
                     ),
                   )
                 : Row(
                     children: [
-                      Expanded(child: webProfileSection(context)),
+                      Expanded(child: webContactSection(context)),
                       Dimens.boxWidth10,
                       Expanded(
                         flex: 2,
@@ -71,7 +71,7 @@ class AboutWidget extends StatelessWidget {
                         ),
                       ),
                       Dimens.boxWidth10,
-                      Expanded(child: webProfileSection(context)),
+                      Expanded(child: webContactSection(context)),
                     ],
                   ),
           ),
@@ -81,12 +81,11 @@ class AboutWidget extends StatelessWidget {
   }
 }
 
-Widget webProfileSection(context) {
+Widget webContactSection(context) {
   return Container(
     alignment: Alignment.center,
     height: Get.height,
     width: Get.width,
-    //color: Color(0xffcccccc),
     color: Colors.white.withOpacity(0.8),
     child: Padding(
       padding: EdgeInsets.symmetric(
@@ -97,7 +96,7 @@ Widget webProfileSection(context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Creator',
+              'Shubham Jha',
               style: AppTextStyle.black_20_700,
             ),
             const Divider(
@@ -116,23 +115,22 @@ Widget webProfileSection(context) {
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.white)),
             ),
-            Dimens.boxHeight2,
+            Dimens.boxHeight5,
             Text(
-              'Shubham Jha',
+              'Professional photographer',
               style: AppTextStyle.black_20_700,
             ),
-            Dimens.boxHeight2,
+            Dimens.boxHeight5,
             Text(
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-              'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,'
-              ' when an unknown printer took a galley of type and scrambled it to make a type '
-              ' specimen book. It has survived not only five centuries, but also the leap into '
-              ' electronic typesetting, remaining essentially unchanged. It was popularised in '
-              ' the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,'
-              '  and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.,',
-              textAlign: TextAlign.center,
+              'example@gmail.com',
               style: AppTextStyle.black_17_400,
             ),
+            Dimens.boxHeight5,
+            Text(
+              '+91 9245678985',
+              style: AppTextStyle.black_17_400,
+            ),
+            Dimens.boxHeight5,
           ],
         ),
       ),

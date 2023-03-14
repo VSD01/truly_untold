@@ -13,12 +13,5 @@ class AppPages {
       binding: HomeBinding(),
       transition: Transition.fadeIn,
     ),
-    GetPage<AboutScreen>(
-      name: Routes.about,
-      transitionDuration: transitionDuration,
-      page: AboutScreen.new,
-      binding: AboutBinding(),
-      transition: Transition.fadeIn,
-    ),
   ];
 }
