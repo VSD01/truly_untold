@@ -4,6 +4,7 @@ import 'package:practise1/app/app.dart';
 import 'package:practise1/app/pages/contact/contact.dart';
 import 'package:practise1/app/pages/home/home.dart';
 
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -30,65 +31,95 @@ class HomeScreen extends StatelessWidget {
 }
 
 Widget webAppBar() {
-  return Row(
-    children: [
-      Spacer(),
-      Row(
+  return GetBuilder<HomeController>(
+    builder: (controller) {
+   
+  
+      // print('ip adress-view part------------------------${controller.data} ---  ${controller.data=='{ip: 122.173.29.168}'}');
+      return Row(
         children: [
-          GestureDetector(
-            onTap: () {
-              Get.dialog(AboutScreen());
-            },
-            child: Text(
-              'About',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold),
-            ),
+          Spacer(),
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Get.dialog(AboutScreen());
+                },
+                child: Text(
+                  'About',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              SizedBox(
+                width: 100,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.dialog(GalleryScreen());
+                },
+                child: Text(
+                  'Gallery',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              SizedBox(
+                width: 100,
+              ),
+              Text(
+                'Blog',
+                style: TextStyle(
+                    color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                width: 100,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.dialog(ContactScreen());
+                },
+                child: Text(
+                  'Contact',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold),
+                ),
+             
+
+              ),
+              controller.isIpmatched==true?
+               SizedBox(
+                width: 100,
+              ):Container(),
+               controller.isIpmatched==true?
+             
+              GestureDetector(
+                onTap: () {
+                  Get.dialog(ContactScreen());
+                },
+                child: Text(
+                  'Admin',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold),
+                ),
+             
+
+              ):Container(),
+
+            ],
           ),
-          SizedBox(
-            width: 100,
-          ),
-          GestureDetector(
-            onTap: () {
-              Get.dialog(GalleryScreen());
-            },
-            child: Text(
-              'Gallery',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-          SizedBox(
-            width: 100,
-          ),
-          Text(
-            'Blog',
-            style: TextStyle(
-                color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            width: 100,
-          ),
-          GestureDetector(
-            onTap: () {
-              Get.dialog(ContactScreen());
-            },
-            child: Text(
-              'Contact',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
+          Spacer(),
         ],
-      ),
-      Spacer(),
-    ],
+      );
+    }
   );
 }
 
