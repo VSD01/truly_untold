@@ -14,33 +14,34 @@ class HomeWidget extends StatelessWidget {
       return SafeArea(
         child: GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: Responsive.isMobile(context) ? 30 : 200),
-            child: Stack(
-              alignment: Alignment.bottomRight,
-              children: [
-                Responsive.isMobile(context)
-                    ? Container()
-                    : Image.asset(
-                        'assets/logo.png',
-                        height: Dimens.twentyFive,
-                      ),
-                Column(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              // centerImageWidget(),
+              Responsive.isMobile(context)
+                  ? Container()
+                  : Image.asset(
+                      'assets/logo.png',
+                      height: Dimens.twentyFive,
+                    ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal:  Responsive.isMobile(context) ? 30 : 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     ///Logo text here------
                     mainTitleWidget(),
-
+              
                     ////Center image widget here------
                     centerImageWidget(),
-
+              
                     ///Bio widget here---------
                     bioWidget(context),
                     Dimens.boxHeight10,
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       );
@@ -85,12 +86,12 @@ Widget mainTitleWidget() {
 ///Center image widget here
 Widget centerImageWidget() {
   return Expanded(
-    flex: 2,
-    child: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: NetworkImage(
-                    "https://th.bing.com/th/id/R.c81ae7b371e44d77dfc7f5e822047ced?rik=QFGQxInWl6gosg&riu=http%3a%2f%2fcdn.mysitoo.com%2f10750%2fcache%2fatn1024_Poster+Two+Face+-+Tom+Levin+web.jpg%3fv%3d1414619492&ehk=s%2foAn%2b4SyMyk%2bCF0Sr6S7EVJv6mSMg10sgLXQdHGhvE%3d&risl=&pid=ImgRaw&r=0")))),
+    child: Expanded(
+     
+      child: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(image: AssetImage("assets/vishal_front.jpg")))),
+    ),
   );
 }
 
