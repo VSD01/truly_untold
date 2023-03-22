@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:video_player/video_player.dart';
 import 'dart:math' as math;
 
 class GalleryWidget extends StatelessWidget {
@@ -37,8 +38,8 @@ class GalleryWidget extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Image.asset(
-                                  'assets/ankur_side.jpg',
-                                  fit: BoxFit.cover,
+                                  'assets/side new  ankur.jpg',
+                                  
                                 ),
                               ),
                               Expanded(
@@ -51,8 +52,8 @@ class GalleryWidget extends StatelessWidget {
                               ),
                               Expanded(
                                 child: Image.asset(
-                                  'assets/vishal_side.jpg',
-                                  fit: BoxFit.cover,
+                                  'assets/side new  vishal.jpg',
+
                                 ),
                               ),
                             ],
@@ -151,17 +152,25 @@ class GalleryWidget extends StatelessWidget {
 }
 
 Widget profileAvatar() {
-  return Expanded(
-    child: Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage('assets/mine.png')),
-        color: Colors.black,
-        border: Border.all(color: Color(0xffcccccc), width: 5),
-        shape: BoxShape.circle,
-      ),
-      height: Dimens.percentHeight(.30),
-      width: Dimens.percentHeight(.30),
-    ),
+  return GetBuilder<HomeController>(
+    builder: (controller) {
+      return Expanded(
+   
+          child:Container(
+             decoration: BoxDecoration(
+            //   image: DecorationImage(image: AssetImage('assets/mine.png')),
+               color: Colors.black,
+               border: Border.all(color: Color(0xffcccccc), width: 5),
+               shape: BoxShape.circle,
+
+            ),
+            height: Dimens.percentHeight(.30),
+            width: Dimens.percentHeight(.30),
+            child: VideoPlayer(controller.vedioController),
+          ),
+        
+      );
+    }
   );
 }
 

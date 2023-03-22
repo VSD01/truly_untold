@@ -17,24 +17,32 @@ class HomeWidget extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              // centerImageWidget(),
-              Responsive.isMobile(context)
-                  ? Container()
-                  : Image.asset(
-                      'assets/logo.png',
-                      height: Dimens.twentyFive,
-                    ),
+               Responsive.isMobile(context)
+                  ? Container():centerImageWidget(),
+             
+              
               Padding(
                 padding: EdgeInsets.symmetric(horizontal:  Responsive.isMobile(context) ? 30 : 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                     Responsive.isMobile(context)
+                  ? Container()
+                  : Expanded(
+                    flex: 2,
+                    child: Image.asset(
+                        'assets/logo croped.png',
+                       scale: 3,
+                      ),
+                  ),
                     ///Logo text here------
                     mainTitleWidget(),
-              
-                    ////Center image widget here------
-                    centerImageWidget(),
-              
+               Responsive.isMobile(context)
+                  ? centerImageWidget():Container(),
+                   Responsive.isMobile(context)
+                  ?Container(): Spacer(
+                    flex: 1,
+                  ),
                     ///Bio widget here---------
                     bioWidget(context),
                     Dimens.boxHeight10,
@@ -86,11 +94,22 @@ Widget mainTitleWidget() {
 ///Center image widget here
 Widget centerImageWidget() {
   return Expanded(
-    child: Expanded(
-     
-      child: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(image: AssetImage("assets/vishal_front.jpg")))),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+         Expanded(
+        
+          child: Container(
+              decoration: const BoxDecoration(
+                  image: DecorationImage(image: AssetImage("assets/side new  vishal.jpg")))),
+        ),
+        Expanded(
+        
+          child: Container(
+              decoration: const BoxDecoration(
+                  image: DecorationImage(image: AssetImage("assets/side new  ankur.jpg")))),
+        ),
+      ],
     ),
   );
 }
@@ -98,6 +117,7 @@ Widget centerImageWidget() {
 ////Bio widget for web
 Widget bioWidget(BuildContext context) {
   return Expanded(
+   
     child: Container(
       width: Dimens.percentHeight(.50),
       child: AnimatedTextKit(

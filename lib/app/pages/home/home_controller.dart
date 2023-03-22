@@ -2,6 +2,7 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_ip_address/get_ip_address.dart';
+import 'package:video_player/video_player.dart';
 
 
 class HomeController extends GetxController
@@ -22,6 +23,9 @@ var ipAddress =  IpAddress();
   }
   }
 
+  // All controllers will stay here
+  late VideoPlayerController vedioController;
+
 
   @override
   void onInit()async {
@@ -33,7 +37,12 @@ var ipAddress =  IpAddress();
     animation = CurvedAnimation(parent: controller!, curve: Curves.easeIn);
     getIpAdress();
     
-
+ vedioController = VideoPlayerController.network(
+        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4')
+      ..initialize().then((_) {
+        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+       update();
+      });
    
   
   
