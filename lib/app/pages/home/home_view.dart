@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
-import 'package:practise1/app/pages/contact/contact.dart';
-import 'package:practise1/app/pages/home/home.dart';
+
 
 
 class HomeScreen extends StatelessWidget {
@@ -58,7 +57,7 @@ Widget webAppBar() {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.dialog(GalleryScreen());
+                  NavigateTo.galleryScreen();
                 },
                 child: Text(
                   'Gallery',
@@ -71,10 +70,15 @@ Widget webAppBar() {
               SizedBox(
                 width: 100,
               ),
-              Text(
-                'Blog',
-                style: TextStyle(
-                    color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
+              GestureDetector(
+                onTap: (){
+                  NavigateTo.menuPageScreen();
+                },
+                child: Text(
+                  'Blog',
+                  style: TextStyle(
+                      color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
+                ),
               ),
               SizedBox(
                 width: 100,
@@ -101,7 +105,7 @@ Widget webAppBar() {
              
               GestureDetector(
                 onTap: () {
-                  Get.dialog(ContactScreen());
+                
                 },
                 child: Text(
                   'Admin',
@@ -159,15 +163,25 @@ Widget mobileAppBarWidget() {
               Get.back();
               Get.dialog(GalleryScreen());
             },
-            child: Text(
-              'Gallery',
-              style: AppTextStyle.black_17_700,
+            child: GestureDetector(
+              onTap: (){
+                NavigateTo.galleryScreen();
+              },
+              child: Text(
+                'Gallery',
+                style: AppTextStyle.black_17_700,
+              ),
             ),
           ),
           Dimens.boxHeight15,
-          Text(
-            'Blog',
-            style: AppTextStyle.black_17_700,
+          GestureDetector(
+            onTap: (){
+               NavigateTo.menuPageScreen();
+            },
+            child: Text(
+              'Blog',
+              style: AppTextStyle.black_17_700,
+            ),
           ),
           Dimens.boxHeight15,
           GestureDetector(

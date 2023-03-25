@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
 
+
 class AboutWidget extends StatelessWidget {
   const AboutWidget({super.key});
 
@@ -40,7 +41,7 @@ class AboutWidget extends StatelessWidget {
                                       .openDrawer();
                                 },
                                 child: Icon(Icons.cancel_rounded))),
-                        webProfileSection(context),
+                        webProfileSection(context,image: 'assets/_VSD8558.jpg',name: 'Vishal Singh Disodia'),
                         GestureDetector(
                           onTap: () {
                             Get.back();
@@ -51,13 +52,13 @@ class AboutWidget extends StatelessWidget {
                             color: Colors.transparent,
                           ),
                         ),
-                        webProfileSection(context),
+                        webProfileSection(context,image: 'assets/ankur profile.jpg',name:'Ankur Katiyar'),
                       ],
                     ),
                   )
                 : Row(
                     children: [
-                      Expanded(child: webProfileSection(context)),
+                      Expanded(child: webProfileSection(context,image: 'assets/_VSD8558.jpg',name: 'Vishal Singh Disodia')),
                       Dimens.boxWidth10,
                       Expanded(
                         flex: 2,
@@ -71,7 +72,7 @@ class AboutWidget extends StatelessWidget {
                         ),
                       ),
                       Dimens.boxWidth10,
-                      Expanded(child: webProfileSection(context)),
+                      Expanded(child: webProfileSection(context,image: 'assets/ankur profile.jpg',name:'Ankur Katiyar')),
                     ],
                   ),
           ),
@@ -81,7 +82,7 @@ class AboutWidget extends StatelessWidget {
   }
 }
 
-Widget webProfileSection(context) {
+Widget webProfileSection(context,{required String name,required String image,}) {
   return Container(
     alignment: Alignment.center,
     height: Get.height,
@@ -97,7 +98,7 @@ Widget webProfileSection(context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Creator',
+              'Founder',
               style: AppTextStyle.black_20_700,
             ),
             const Divider(
@@ -113,12 +114,16 @@ Widget webProfileSection(context) {
                       ? Get.width * 0.60
                       : Dimens.fourty,
               decoration: BoxDecoration(
+                
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(image)),
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.white)),
             ),
             Dimens.boxHeight2,
             Text(
-              'Shubham Jha',
+              name,
               style: AppTextStyle.black_20_700,
             ),
             Dimens.boxHeight2,

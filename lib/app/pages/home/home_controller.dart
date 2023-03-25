@@ -23,8 +23,9 @@ var ipAddress =  IpAddress();
   }
   }
 
-  // All controllers will stay here
-  late VideoPlayerController vedioController;
+ 
+
+
 
 
   @override
@@ -37,12 +38,7 @@ var ipAddress =  IpAddress();
     animation = CurvedAnimation(parent: controller!, curve: Curves.easeIn);
     getIpAdress();
     
- vedioController = VideoPlayerController.network(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4')
-      ..initialize().then((_) {
-        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-       update();
-      });
+ 
    
   
   

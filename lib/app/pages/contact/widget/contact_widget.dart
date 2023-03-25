@@ -113,6 +113,7 @@ Widget webContactSection(context) {
                       : Dimens.fourty,
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
+                  image: DecorationImage(image: AssetImage('assets/colored_logo.jpg')),
                   border: Border.all(color: Colors.white)),
             ),
             Dimens.boxHeight5,

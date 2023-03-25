@@ -11,7 +11,7 @@ class GalleryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _key = GlobalKey();
-    return GetBuilder<HomeController>(builder: (controller) {
+    return GetBuilder<GalleryController>(builder: (controller) {
       return SafeArea(
           child: GestureDetector(
         onTap: () {
@@ -76,8 +76,7 @@ class GalleryWidget extends StatelessWidget {
                             child: GestureDetector(
                                 onTap: () {
                                   Get.back();
-                                  controller.drawerPageKey.currentState!
-                                      .openDrawer();
+                                  Get.find<HomeController>().drawerPageKey.currentState!.openDrawer();
                                 },
                                 child: Icon(
                                   Icons.cancel_rounded,
@@ -152,23 +151,32 @@ class GalleryWidget extends StatelessWidget {
 }
 
 Widget profileAvatar() {
-  return GetBuilder<HomeController>(
+  return GetBuilder<GalleryController>(
     builder: (controller) {
-      return Expanded(
-   
-          child:Container(
-             decoration: BoxDecoration(
-            //   image: DecorationImage(image: AssetImage('assets/mine.png')),
-               color: Colors.black,
-               border: Border.all(color: Color(0xffcccccc), width: 5),
-               shape: BoxShape.circle,
-
-            ),
-            height: Dimens.percentHeight(.30),
-            width: Dimens.percentHeight(.30),
-            child: VideoPlayer(controller.vedioController),
+      return GestureDetector(
+        onTap: (){
+          controller.vedioController.value.isPlaying
+              ? controller.vedioController.pause()
+              : controller.vedioController.play();
+              controller.update();
+        },
+        child: Container(
+           decoration: BoxDecoration(
+          //   image: DecorationImage(image: AssetImage('assets/mine.png')),
+             color: Colors.black,
+             border: Border.all(color: Color(0xffcccccc), width: 5),
+             shape: BoxShape.circle,
+      
           ),
-        
+          //height: Dimens.percentHeight(.30),
+         // width: Dimens.percentHeight(.30),
+         height: Get.height*0.20,
+         width: Get.width*0.05,
+          child: ClipRRect(
+           borderRadius: BorderRadius.circular(50),
+           clipBehavior: Clip.hardEdge,
+            child: VideoPlayer(controller.vedioController)),
+        ),
       );
     }
   );
