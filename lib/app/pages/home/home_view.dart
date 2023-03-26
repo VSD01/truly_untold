@@ -105,7 +105,48 @@ Widget webAppBar() {
              
               GestureDetector(
                 onTap: () {
-                
+                Get.dialog(Scaffold(
+                  body: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                     
+                                  children: [
+                    GestureDetector(
+                      onTap: (){
+                         NavigateTo.menuPageScreen();
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: Get.width*0.70,
+                        height: Get.height*0.05,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(color: Colors.grey)
+                        ),
+                        child: Text('Add Blog',style: AppTextStyle.black_17_400,),
+                      ),
+                    ),
+                    SizedBox(height: Get.height*0.05,),
+                    GestureDetector(
+                      onTap: (){
+                        NavigateTo.addImageScreen();
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: Get.width*0.70,
+                        height: Get.height*0.05,
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(15),
+                         
+                        ),
+                        child: Text('Add Image',style: AppTextStyle.white_17_400,),
+                      ),
+                    )
+                                  ],
+                    ),
+                  ),
+                ));
                 },
                 child: Text(
                   'Admin',
@@ -128,74 +169,139 @@ Widget webAppBar() {
 }
 
 Widget mobileAppBarWidget() {
-  return Container(
-    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-    decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.9),
-        borderRadius: BorderRadius.only(
-            topRight: Radius.circular(20), bottomRight: Radius.circular(20))),
-    child: Drawer(
-      width: Dimens.percentWidth(.40),
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Dimens.boxHeight20,
-          Container(
-              decoration: BoxDecoration(
-                  color: Colors.black, borderRadius: BorderRadius.circular(20)),
-              child: Image.asset('assets/logo.png')),
-          Dimens.boxHeight20,
-          GestureDetector(
-            onTap: () {
-              Get.back();
-              Get.dialog(AboutScreen());
-            },
-            child: Text(
-              'About',
-              style: AppTextStyle.black_17_700,
-            ),
-          ),
-          Dimens.boxHeight15,
-          GestureDetector(
-            onTap: () {
-              Get.back();
-              Get.dialog(GalleryScreen());
-            },
-            child: GestureDetector(
-              onTap: (){
-                NavigateTo.galleryScreen();
-              },
-              child: Text(
-                'Gallery',
-                style: AppTextStyle.black_17_700,
+  return GetBuilder<HomeController>(
+    builder: (controller) {
+      return Container(
+        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+        decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.9),
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20), bottomRight: Radius.circular(20))),
+        child: Drawer(
+          width: Dimens.percentWidth(.40),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Dimens.boxHeight20,
+              Container(
+                  decoration: BoxDecoration(
+                      color: Colors.black, borderRadius: BorderRadius.circular(20)),
+                  child: Image.asset('assets/logo.png')),
+              Dimens.boxHeight20,
+              GestureDetector(
+                onTap: () {
+                  Get.back();
+                  Get.dialog(AboutScreen());
+                },
+                child: Text(
+                  'About',
+                  style: AppTextStyle.black_17_700,
+                ),
               ),
-            ),
+              Dimens.boxHeight15,
+              GestureDetector(
+                onTap: () {
+                  Get.back();
+                  Get.dialog(GalleryScreen());
+                },
+                child: GestureDetector(
+                  onTap: (){
+                    NavigateTo.galleryScreen();
+                  },
+                  child: Text(
+                    'Gallery',
+                    style: AppTextStyle.black_17_700,
+                  ),
+                ),
+              ),
+              Dimens.boxHeight15,
+              GestureDetector(
+                onTap: (){
+                   NavigateTo.menuPageScreen();
+                },
+                child: Text(
+                  'Blog',
+                  style: AppTextStyle.black_17_700,
+                ),
+              ),
+              Dimens.boxHeight15,
+              GestureDetector(
+                onTap: () {
+                  Get.back();
+                  Get.dialog(ContactScreen());
+                },
+                child: Text(
+                  'Contact',
+                  style: AppTextStyle.black_17_700,
+                ),
+              ),
+               controller.isIpmatched==true?
+                   SizedBox(
+                    width: 100,
+                  ):Container(),
+                   controller.isIpmatched==true?
+                 
+                  GestureDetector(
+                    onTap: () {
+                    Get.dialog(Scaffold(
+                      body: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                         
+                                      children: [
+                        GestureDetector(
+                          onTap: (){
+                             NavigateTo.menuPageScreen();
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: Get.width*0.70,
+                            height: Get.height*0.05,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(color: Colors.grey)
+                            ),
+                            child: Text('Add Blog',style: AppTextStyle.black_17_400,),
+                          ),
+                        ),
+                        SizedBox(height: Get.height*0.05,),
+                        GestureDetector(
+                          onTap: (){
+                            NavigateTo.addImageScreen();
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: Get.width*0.70,
+                            height: Get.height*0.05,
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(15),
+                             
+                            ),
+                            child: Text('Add Image',style: AppTextStyle.white_17_400,),
+                          ),
+                        )
+                                      ],
+                        ),
+                      ),
+                    ));
+                    },
+                    child: Text(
+                      'Admin',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold),
+                    ),
+                 
+
+                  ):Container(),
+            ],
           ),
-          Dimens.boxHeight15,
-          GestureDetector(
-            onTap: (){
-               NavigateTo.menuPageScreen();
-            },
-            child: Text(
-              'Blog',
-              style: AppTextStyle.black_17_700,
-            ),
-          ),
-          Dimens.boxHeight15,
-          GestureDetector(
-            onTap: () {
-              Get.back();
-              Get.dialog(ContactScreen());
-            },
-            child: Text(
-              'Contact',
-              style: AppTextStyle.black_17_700,
-            ),
-          ),
-        ],
-      ),
-    ),
+        ),
+      );
+    }
   );
 }

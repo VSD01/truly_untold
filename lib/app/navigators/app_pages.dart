@@ -31,5 +31,13 @@ class AppPages {
       binding: GalleryBinding(),
       transition: Transition.fadeIn,
     ),
+
+     GetPage<AddImageScreen>(
+      name: Routes.addImage,
+      transitionDuration: transitionDuration,
+      page: AddImageScreen.new,
+      binding: AddImageBinding(),
+      transition: Transition.fadeIn,
+    ),
   ];
 }

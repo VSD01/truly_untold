@@ -10,4 +10,8 @@ class NavigateTo {
   static void galleryScreen(){
     Get.toNamed(Routes.gallery);
   }
+
+    static void addImageScreen(){
+    Get.toNamed(Routes.addImage);
+  }
 }

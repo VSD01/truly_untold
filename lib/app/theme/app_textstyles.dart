@@ -19,6 +19,11 @@ class AppTextStyle {
     fontSize: 17,
     fontWeight: FontWeight.normal,
   );
+  static TextStyle white_17_400 = GoogleFonts.oswald(
+    color: Colors.white,
+    fontSize: 17,
+    fontWeight: FontWeight.normal,
+  );
 
   static TextStyle black_20_700 = GoogleFonts.oswald(
     color: Colors.black,

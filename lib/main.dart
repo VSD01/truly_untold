@@ -3,11 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
 
-void main() async{
+void main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
-    //await Firebase.initializeApp();
+    await Firebase.initializeApp(
+      options: FirebaseOptions(
+        apiKey: "AIzaSyBmgLFmU38xFmnidxeaQsMmZ6OoeSW8WIo",
+        appId: "1:895080848079:web:009cfa81600f87a89e75ba",
+        messagingSenderId: "895080848079",
+        projectId: "truly-untold",
+        storageBucket: "truly-untold.appspot.com",
+      ),
+    );
     runApp(const MyApp());
   } catch (e) {
     debugPrint(e.toString());
@@ -36,6 +45,3 @@ class _MyAppState extends State<MyApp> {
         });
   }
 }
-
-
-

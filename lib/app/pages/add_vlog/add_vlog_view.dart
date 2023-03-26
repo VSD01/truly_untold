@@ -22,7 +22,7 @@ class AddVlog extends StatelessWidget {
                     onTap: (){
                       final title=controller.titleController.text;
                       final description=controller.descriptionController.text;
-                      saveBlog(title:title,description:description, );
+                     controller.saveBlog(title:title,description:description, );
                     },
                     child: Icon(Icons.check,color: Colors.white,))),
               ],
@@ -35,16 +35,3 @@ class AddVlog extends StatelessWidget {
   }
 }
 
-Future saveBlog({required String title,required String description,})async{
-  ///Reference to document
-  final docUser=FirebaseFirestore.instance.collection('blogs').doc('my-id');
-  final json={
-    'title':title,
-    'image':'image.com',
-    'description':description,
-  };
-
-  ///create document and write dtaa to firebase
-  await docUser.set(json);
-
-}
