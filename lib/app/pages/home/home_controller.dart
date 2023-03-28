@@ -2,6 +2,7 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_ip_address/get_ip_address.dart';
+import 'package:hive/hive.dart';
 import 'package:video_player/video_player.dart';
 
 
@@ -11,10 +12,12 @@ class HomeController extends GetxController
   AnimationController? controller;
   var drawerPageKey = GlobalKey<ScaffoldState>();
 var isIpmatched=true;
+  Box? box;
       
    getIpAdress()async{
 var ipAddress =  IpAddress();
    dynamic data = await ipAddress.getIpAddress() as String ? ?? '';
+   box!.put('ipAdress', data);
   if(data=='122.173.29.168'){
  isIpmatched=true;
   }else
@@ -43,5 +46,6 @@ var ipAddress =  IpAddress();
   
   
     super.onInit();
-  }
+    box=Hive.box('ttu');
+     }
 }

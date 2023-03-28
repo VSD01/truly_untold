@@ -6,7 +6,7 @@ import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/file_picker.dart';
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -16,9 +16,9 @@ class AddVlogController extends GetxController{
   var descriptionController=TextEditingController();
 
 /// all variable here
-   PlatformFile? pickedFile;
+
   var image='';
-  FilePickerResult? result;
+
 
   FocusNode  isFocused=FocusNode();
 
@@ -35,7 +35,9 @@ String coverImageUrl='';
     FirebaseStorage fs = FirebaseStorage.instance;
     input.click();
     input.onChange.listen((event) {
-      final file = input.files!.first;
+      print('loading-------------------');
+     
+        final file = input.files!.first;
       final reader = FileReader();
       reader.readAsDataUrl(file);
       reader.onLoadEnd.listen((event) async {
@@ -46,6 +48,7 @@ String coverImageUrl='';
           print('imageurl---------$coverImageUrl');
         update();
       });
+     
     });
    
   }

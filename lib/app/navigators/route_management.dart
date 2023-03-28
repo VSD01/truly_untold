@@ -14,4 +14,8 @@ class NavigateTo {
     static void addImageScreen(){
     Get.toNamed(Routes.addImage);
   }
+
+    static void blogsScreen(){
+    Get.toNamed(Routes.blogs);
+  }
 }

@@ -1,9 +1,7 @@
 import 'dart:io';
 
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:practise1/app/app.dart';
 import 'package:practise1/app/pages/add_vlog/add_vlog_controller.dart';
 

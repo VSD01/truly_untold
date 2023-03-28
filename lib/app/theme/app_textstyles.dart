@@ -8,6 +8,22 @@ class AppTextStyle {
     fontWeight: FontWeight.bold,
   );
 
+
+ static TextStyle white_30_700 = GoogleFonts.oswald(
+    color: Colors.white,
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+  );
+
+
+   static TextStyle veryLarge_700 = GoogleFonts.poppins(
+    color: Colors.white,
+    height: 0.8,
+    fontSize: 700,
+    fontWeight: FontWeight.bold,
+    
+  );
+
   static TextStyle black_17_700 = GoogleFonts.oswald(
     color: Colors.black,
     fontSize: 17,

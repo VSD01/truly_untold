@@ -39,5 +39,13 @@ class AppPages {
       binding: AddImageBinding(),
       transition: Transition.fadeIn,
     ),
+
+    GetPage<BlogsScreen>(
+      name: Routes.blogs,
+      transitionDuration: transitionDuration,
+      page: BlogsScreen.new,
+      binding: BlogsBinding(),
+      transition: Transition.fadeIn,
+    ),
   ];
 }

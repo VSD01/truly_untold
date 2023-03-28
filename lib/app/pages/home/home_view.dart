@@ -43,6 +43,7 @@ Widget webAppBar() {
               GestureDetector(
                 onTap: () {
                   Get.dialog(AboutScreen());
+                  
                 },
                 child: Text(
                   'About',
@@ -72,7 +73,7 @@ Widget webAppBar() {
               ),
               GestureDetector(
                 onTap: (){
-                  NavigateTo.menuPageScreen();
+                  NavigateTo.blogsScreen();
                 },
                 child: Text(
                   'Blog',
