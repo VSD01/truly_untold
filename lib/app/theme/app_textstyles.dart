@@ -8,20 +8,16 @@ class AppTextStyle {
     fontWeight: FontWeight.bold,
   );
 
-
- static TextStyle white_30_700 = GoogleFonts.ptSans(
+  static TextStyle white_30_700 = GoogleFonts.ptSans(
     color: Colors.white,
     fontSize: 30,
     fontWeight: FontWeight.bold,
   );
 
-
-   static TextStyle veryLarge_700 = GoogleFonts.poppins(
+  static TextStyle veryLarge_700 = GoogleFonts.poppins(
     color: Colors.white,
-    height: 0.8,
     fontSize: 700,
     fontWeight: FontWeight.bold,
-    
   );
 
   static TextStyle black_17_700 = GoogleFonts.ptSans(
@@ -36,7 +32,7 @@ class AppTextStyle {
     fontWeight: FontWeight.normal,
   );
 
-   static TextStyle grey_17_400 = GoogleFonts.ptSans(
+  static TextStyle grey_17_400 = GoogleFonts.ptSans(
     color: Colors.grey,
     fontSize: 17,
     fontWeight: FontWeight.normal,

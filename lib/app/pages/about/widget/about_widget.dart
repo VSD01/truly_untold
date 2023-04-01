@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
 
-
 class AboutWidget extends StatelessWidget {
   const AboutWidget({super.key});
 
@@ -41,7 +40,15 @@ class AboutWidget extends StatelessWidget {
                                       .openDrawer();
                                 },
                                 child: Icon(Icons.cancel_rounded))),
-                        webProfileSection(context,image: 'assets/_VSD8558.jpg',name: 'Vishal Singh Disodia'),
+                        webProfileSection(context,
+                            image: 'assets/_VSD8558.jpg',
+                            name: 'Vishal Singh Disodia',
+                            description:
+                                'Hi there my name is Vishal. Professionally I am a Film maker But'
+                                'here in ttu I and ankur both are doing something really different.'
+                                ' We are just trying to dig out some unknown facts revolving around'
+                                ' us that nobody knows. So definitely this site is just for you if you'
+                                ' love to know more about your world. '),
                         GestureDetector(
                           onTap: () {
                             Get.back();
@@ -52,13 +59,29 @@ class AboutWidget extends StatelessWidget {
                             color: Colors.transparent,
                           ),
                         ),
-                        webProfileSection(context,image: 'assets/ankur profile.jpg',name:'Ankur Katiyar'),
+                        webProfileSection(context,
+                            image: 'assets/ankur profile.jpg',
+                            name: 'Ankur Katiyar',
+                            description:
+                                'Hi, my name is Ankur and I am professionally 3D '
+                                ' artist and recently we just started ttu. I and Vishal both are'
+                                ' just working on this project. Where we are discussing some'
+                                ' mind-blowing stories and activity of the world. Let\'s go join us in this journey !'),
                       ],
                     ),
                   )
                 : Row(
                     children: [
-                      Expanded(child: webProfileSection(context,image: 'assets/_VSD8558.jpg',name: 'Vishal Singh Disodia')),
+                      Expanded(
+                          child: webProfileSection(context,
+                              image: 'assets/_VSD8558.jpg',
+                              name: 'Vishal Singh Disodia',
+                              description:
+                                  'Hi there my name is Vishal. Professionally I am a Film maker But'
+                                  'here in ttu I and ankur both are doing something really different.'
+                                  ' We are just trying to dig out some unknown facts revolving around'
+                                  ' us that nobody knows. So definitely this site is just for you if you'
+                                  ' love to know more about your world. ')),
                       Dimens.boxWidth10,
                       Expanded(
                         flex: 2,
@@ -72,7 +95,15 @@ class AboutWidget extends StatelessWidget {
                         ),
                       ),
                       Dimens.boxWidth10,
-                      Expanded(child: webProfileSection(context,image: 'assets/ankur profile.jpg',name:'Ankur Katiyar')),
+                      Expanded(
+                          child: webProfileSection(context,
+                              image: 'assets/ankur profile.jpg',
+                              name: 'Ankur Katiyar',
+                              description:
+                                  'Hi, my name is Ankur and I am professionally 3D '
+                                  ' artist and recently we just started ttu. I and Vishal both are'
+                                  ' just working on this project. Where we are discussing some'
+                                  ' mind-blowing stories and activity of the world. Let\'s go join us in this journey !')),
                     ],
                   ),
           ),
@@ -82,7 +113,12 @@ class AboutWidget extends StatelessWidget {
   }
 }
 
-Widget webProfileSection(context,{required String name,required String image,}) {
+Widget webProfileSection(
+  context, {
+  required String name,
+  required String image,
+  required String description,
+}) {
   return Container(
     alignment: Alignment.center,
     height: Get.height,
@@ -90,8 +126,7 @@ Widget webProfileSection(context,{required String name,required String image,}) 
     //color: Color(0xffcccccc),
     color: Colors.white.withOpacity(0.8),
     child: Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: Responsive.isMobile(context) ? 30 : 70),
+      padding: EdgeInsets.symmetric(horizontal: 30),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -114,10 +149,8 @@ Widget webProfileSection(context,{required String name,required String image,}) 
                       ? Get.width * 0.60
                       : Dimens.fourty,
               decoration: BoxDecoration(
-                
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(image)),
+                  image: DecorationImage(
+                      fit: BoxFit.cover, image: AssetImage(image)),
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.white)),
             ),
@@ -128,13 +161,7 @@ Widget webProfileSection(context,{required String name,required String image,}) 
             ),
             Dimens.boxHeight2,
             Text(
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-              'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,'
-              ' when an unknown printer took a galley of type and scrambled it to make a type '
-              ' specimen book. It has survived not only five centuries, but also the leap into '
-              ' electronic typesetting, remaining essentially unchanged. It was popularised in '
-              ' the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,'
-              '  and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.,',
+              description,
               textAlign: TextAlign.center,
               style: AppTextStyle.black_17_400,
             ),
