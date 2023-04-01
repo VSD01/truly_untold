@@ -130,6 +130,14 @@ class AddVlogWidget extends StatelessWidget {
                     focusedBorder: InputBorder.none,
                   ),
                 ),
+                 TextFormField(
+                  controller: controller.subtitleController,
+                  decoration: const InputDecoration(
+                    hintText: 'Subtitle...',
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                  ),
+                ),
                 TextFormField(
                   controller: controller.descriptionController,
                   focusNode: controller.isFocused,

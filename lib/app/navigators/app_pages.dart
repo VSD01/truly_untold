@@ -47,5 +47,13 @@ class AppPages {
       binding: BlogsBinding(),
       transition: Transition.fadeIn,
     ),
+
+    GetPage<BlogDetailView>(
+      name: Routes.blogsDetail,
+      transitionDuration: transitionDuration,
+      page: BlogDetailView.new,
+      binding: BlogDetailsBinding(),
+      transition: Transition.fadeIn,
+    ),
   ];
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
+import 'package:practise1/app/app.dart';
 import 'package:practise1/app/pages/add_vlog/add_vlog_pages.dart';
 
 class AddVlog extends StatelessWidget {
@@ -20,9 +21,10 @@ class AddVlog extends StatelessWidget {
                   padding: EdgeInsets.only(right: 20),
                   child: GestureDetector(
                     onTap: (){
-                      final title=controller.titleController.text;
-                      final description=controller.descriptionController.text;
-                     controller.saveBlog(title:title,description:description, );
+                   
+                  
+                     controller.saveBlog();
+                    NavigateTo.homePageScreen();
                     },
                     child: Icon(Icons.check,color: Colors.white,))),
               ],

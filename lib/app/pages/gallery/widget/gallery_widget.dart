@@ -18,132 +18,103 @@ class GalleryWidget extends StatelessWidget {
           FocusManager.instance.primaryFocus!.unfocus();
         },
         child: SingleChildScrollView(
-          child: Expanded(
-            child: Container(
-                alignment: Alignment.centerRight,
-                color: Colors.white.withOpacity(0.8),
-                child: Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Container(
-                          height: Dimens.percentHeight(.65),
-                          width: Get.width,
-                        ),
-                        Container(
-                          color: Colors.black,
-                          height: Dimens.percentHeight(.50),
-                          width: Get.width,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Image.asset(
-                                  'assets/side new  ankur.jpg',
-                                  
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  child: Image.asset(
-                                    'assets/logo.png',
-                                    height: Get.height * 0.20,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Image.asset(
-                                  'assets/side new  vishal.jpg',
-
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          left: 0,
-                          child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      Responsive.isMobile(context) ? 30 : 200),
-                              child: profileAvatar()),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(right: 30, top: 30),
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: GestureDetector(
-                                onTap: () {
-                                  Get.back();
-                                  Get.find<HomeController>().drawerPageKey.currentState!.openDrawer();
-                                },
-                                child: Icon(
-                                  Icons.cancel_rounded,
-                                  color: Colors.white,
-                                )),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Dimens.boxHeight10,
-                    Container(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
+          child: Container(
+              alignment: Alignment.centerRight,
+              color: Colors.white.withOpacity(0.8),
+              child: Column(
+                children: [
+                  Stack(
+                    children: [
+                      Container(
+                        height: Dimens.percentHeight(.65),
                         width: Get.width,
-                        child: GridView.builder(
-                            shrinkWrap: true,
-                            primary: false,
-                            itemCount: imageList.length,
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisSpacing: 40,
-                                    mainAxisSpacing: 40,
-                                    crossAxisCount: 4,
-                                    childAspectRatio: 3.2),
-                            itemBuilder: (BuildContext context, int index) {
-                              return Container(
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                    color: Color(0xffcccccc),
-                                    image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: AssetImage(imageList[index])),
-                                    borderRadius: BorderRadius.circular(20)),
-                              );
-                            })
-                        // GridView.custom(
-                        //   physics: NeverScrollableScrollPhysics(),
-                        //   shrinkWrap: true,
-                        //   primary: false,
-                        //   gridDelegate: SliverQuiltedGridDelegate(
-                        //     crossAxisCount: 4,
-                        //     mainAxisSpacing: 40,
-                        //     crossAxisSpacing: 40,
-                        //     repeatPattern: QuiltedGridRepeatPattern.inverted,
-                        //     pattern: [
-                        //       QuiltedGridTile(1, 2),
-                        //       QuiltedGridTile(1, 1),
-                        //       QuiltedGridTile(1, 1),
-                        //       QuiltedGridTile(1, 2),
-                        //     ],
-                        //   ),
-                        //   childrenDelegate: SliverChildBuilderDelegate(
-                        //       (context, index) => Container(
-                        //             alignment: Alignment.center,
-                        //             decoration: BoxDecoration(
-                        //                 color: Color(0xffcccccc),
-                        //                 image: DecorationImage(
-                        //                     fit: BoxFit.cover,
-                        //                     image: AssetImage(imageList[index])),
-                        //                 borderRadius: BorderRadius.circular(20)),
-                        //           ),
-                        //       childCount: imageList.length),
-                        // ),
+                      ),
+                      Container(
+                        color: Colors.black,
+                        height: Dimens.percentHeight(.50),
+                        width: Get.width,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Image.asset(
+                                'assets/side new  ankur.jpg',
+                                
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                child: Image.asset(
+                                  'assets/logo.png',
+                                  height: Get.height * 0.20,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Image.asset(
+                                'assets/side new  vishal.jpg',
+
+                              ),
+                            ),
+                          ],
                         ),
-                    Dimens.boxHeight10,
-                  ],
-                )),
-          ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        left: 0,
+                        child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    Responsive.isMobile(context) ? 30 : 200),
+                            child: profileAvatar()),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(right: 30, top: 30),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: GestureDetector(
+                              onTap: () {
+                                Get.back();
+                                Get.find<HomeController>().drawerPageKey.currentState!.openDrawer();
+                              },
+                              child: Icon(
+                                Icons.cancel_rounded,
+                                color: Colors.white,
+                              )),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Dimens.boxHeight10,
+                  Container(
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      width: Get.width,
+                      child: GridView.builder(
+                          shrinkWrap: true,
+                          primary: false,
+                          itemCount: imageList.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisSpacing: 40,
+                                  mainAxisSpacing: 40,
+                                  crossAxisCount: 4,
+                                  childAspectRatio: 3.2),
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  color: Color(0xffcccccc),
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(imageList[index])),
+                                  borderRadius: BorderRadius.circular(20)),
+                            );
+                          })
+                      
+                      ),
+                  Dimens.boxHeight10,
+                ],
+              )),
         ),
       ));
     });
