@@ -63,8 +63,10 @@ class BlogsWidget extends StatelessWidget {
                                             headImage: user[0].coverImage,
                                             title: user[0].title,
                                             subtitle: user[0].subtitle,
-                                            articlePara1: user[0].descriptionPara1,
-                                            articlePara2: user[0].descriptionPara2,
+                                            articlePara1:
+                                                user[0].descriptionPara1,
+                                            articlePara2:
+                                                user[0].descriptionPara2,
                                           );
                                         },
                                         child: Column(
@@ -144,8 +146,10 @@ class BlogsWidget extends StatelessWidget {
                                                   title: user[index].title,
                                                   subtitle:
                                                       user[index].subtitle,
-                                                   articlePara1: user[0].descriptionPara1,
-                                            articlePara2: user[0].descriptionPara2,
+                                                  articlePara1:
+                                                      user[0].descriptionPara1,
+                                                  articlePara2:
+                                                      user[0].descriptionPara2,
                                                 );
                                               },
                                               child: Row(
@@ -153,41 +157,48 @@ class BlogsWidget extends StatelessWidget {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Expanded(
-                                                    flex: 1,
-                                                    child: OnHover(builder: (isHovered) {
-                                                      return Stack(
-                                                      children: [
-                                                        Container(
-                                                          height: Get.height * 0.15,
-                                                          decoration: BoxDecoration(
-                                                              color: Colors.grey,
-                                                              image: DecorationImage(
-                                                                  fit: BoxFit.cover,
-                                                                  image: NetworkImage(
-                                                                      user[index]
-                                                                          .coverImage))),
-                                                        ),
-                                                        isHovered
-                                                      ? Container(
-                                                          alignment:
-                                                              Alignment.center,
-                                                          height:
-                                                              Get.height * 0.50,
-                                                          width: Get.width / 2,
-                                                          color: Colors.white
-                                                              .withOpacity(0.9),
-                                                          child: Chip(
-                                                              label: Text(
-                                                            'Explore',
-                                                            style: AppTextStyle
-                                                                .black_20_700,
-                                                          )),
-                                                        )
-                                                      : SizedBox(),
-                                                      ],
-                                                    );
-                                                    },)
-                                                  ),
+                                                      flex: 1,
+                                                      child: OnHover(
+                                                        builder: (isHovered) {
+                                                          return Stack(
+                                                            children: [
+                                                              Container(
+                                                                height:
+                                                                    Get.height *
+                                                                        0.15,
+                                                                decoration: BoxDecoration(
+                                                                    color: Colors
+                                                                        .grey,
+                                                                    image: DecorationImage(
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                        image: NetworkImage(
+                                                                            user[index].coverImage))),
+                                                              ),
+                                                              isHovered
+                                                                  ? Container(
+                                                                      height: Get
+                                                                              .height *
+                                                                          0.15,
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .center,
+                                                                      color: Colors
+                                                                          .white
+                                                                          .withOpacity(
+                                                                              0.9),
+                                                                      child: Chip(
+                                                                          label: Text(
+                                                                        'Explore',
+                                                                        style: AppTextStyle
+                                                                            .black_20_700,
+                                                                      )),
+                                                                    )
+                                                                  : SizedBox(),
+                                                            ],
+                                                          );
+                                                        },
+                                                      )),
                                                   SizedBox(
                                                     width: Get.width * 0.02,
                                                   ),
@@ -241,21 +252,46 @@ class BlogsWidget extends StatelessWidget {
                                               finalList[index].coverImage,
                                           title: finalList[index].title,
                                           subtitle: finalList[index].subtitle,
-                                           articlePara1: user[0].descriptionPara1,
-                                            articlePara2: user[0].descriptionPara2,
+                                          articlePara1:
+                                              user[0].descriptionPara1,
+                                          articlePara2:
+                                              user[0].descriptionPara2,
                                         );
                                       },
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Image(
-                                            image: NetworkImage(
-                                                finalList[index].coverImage),
-                                            height: Get.height * 0.20,
-                                            width: Get.width,
-                                            fit: BoxFit.cover,
-                                          ),
+                                          OnHover(builder: ((isHovered) {
+                                            return Stack(
+                                              children: [
+                                                Image(
+                                                  image: NetworkImage(
+                                                      finalList[index]
+                                                          .coverImage),
+                                                  height: Get.height * 0.20,
+                                                  width: Get.width,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                                isHovered
+                                                    ? Container(
+                                                        height:
+                                                            Get.height * 0.20,
+                                                        alignment:
+                                                            Alignment.center,
+                                                        color: Colors.white
+                                                            .withOpacity(0.9),
+                                                        child: Chip(
+                                                            label: Text(
+                                                          'Explore',
+                                                          style: AppTextStyle
+                                                              .black_20_700,
+                                                        )),
+                                                      )
+                                                    : SizedBox(),
+                                              ],
+                                            );
+                                          })),
                                           SizedBox(
                                             height: Get.height * 0.005,
                                           ),
@@ -280,8 +316,9 @@ class BlogsWidget extends StatelessWidget {
                     }
                   } else {
                     return Container(
-                      height: Get.height,
-                      child: Center(child: const CircularProgressIndicator()));
+                        height: Get.height,
+                        child:
+                            Center(child: const CircularProgressIndicator()));
                   }
                 }),
           ),
