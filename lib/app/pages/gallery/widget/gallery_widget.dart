@@ -86,32 +86,71 @@ class GalleryWidget extends StatelessWidget {
                     ],
                   ),
                   Dimens.boxHeight10,
-                  Container(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
-                      width: Get.width,
-                      child: GridView.builder(
-                          shrinkWrap: true,
-                          primary: false,
-                          itemCount: imageList.length,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisSpacing: 40,
-                                  mainAxisSpacing: 40,
-                                  crossAxisCount: 4,
-                                  childAspectRatio: 3.2),
-                          itemBuilder: (BuildContext context, int index) {
-                            return Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                  color: Color(0xffcccccc),
-                                  image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage(imageList[index])),
-                                  borderRadius: BorderRadius.circular(20)),
-                            );
-                          })
-                      
-                      ),
+                  StreamBuilder<List<GalleryResponse>>(
+                    stream: controller.allImages(),
+                    builder:(context,snapshot){
+                      final imageData=snapshot.data!;
+                    
+                    return Container(
+                  
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      Responsive.isMobile(context) ? 30 : 200),
+                              width: Get.width,
+                              child: GridView.builder(
+                                  shrinkWrap: true,
+                                  primary: false,
+                                  itemCount: imageData.length,
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisSpacing: 40,
+                                    mainAxisSpacing:Responsive.isMobile(context)||Responsive.isTablet(context)?120: 4,
+                                    crossAxisCount:Responsive.isMobile(context)||Responsive.isTablet(context)? 2:4,
+                                    
+               
+                                  ),
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return GestureDetector(
+                                      onTap: () { 
+                                        // NavigateTo.blogDetailsScreen(
+                                        //   headImage:
+                                        //       finalList[index].coverImage,
+                                        //   title: finalList[index].title,
+                                        //   subtitle: finalList[index].subtitle,
+                                        //   article: finalList[index].description,
+                                        // );
+                                      },
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Image(
+                                            image: NetworkImage(
+                                                imageData[index].imageUrl),
+                                            height: Get.height * 0.20,
+                                            width: Get.width,
+                                            fit: BoxFit.cover,
+                                          ),
+                                          SizedBox(
+                                            height: Get.height * 0.005,
+                                          ),
+                                          Text(
+                                            imageData[index].title,
+                                            style: AppTextStyle.black_17_400,
+                                          ),
+                                          SizedBox(
+                                            height: Get.height * 0.005,
+                                          ),
+                                          Text(
+                                            imageData[index].description,
+                                            style: AppTextStyle.grey_17_400,
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }));
+                  } ),
                   Dimens.boxHeight10,
                 ],
               )),
@@ -126,9 +165,9 @@ Widget profileAvatar() {
     builder: (controller) {
       return GestureDetector(
         onTap: (){
-          controller.vedioController.value.isPlaying
-              ? controller.vedioController.pause()
-              : controller.vedioController.play();
+          // controller.vedioController.value.isPlaying
+          //     ? controller.vedioController.pause()
+          //     : controller.vedioController.play();
               controller.update();
         },
         child: Container(
@@ -143,27 +182,16 @@ Widget profileAvatar() {
          // width: Dimens.percentHeight(.30),
          height: Get.height*0.20,
          width: Get.width*0.05,
-          child: ClipRRect(
-           borderRadius: BorderRadius.circular(50),
-           clipBehavior: Clip.hardEdge,
-            child: VideoPlayer(controller.vedioController)),
+          child: 
+          Image.asset('assets/logo.png')
+          // ClipRRect(
+          //  borderRadius: BorderRadius.circular(50),
+          //  clipBehavior: Clip.hardEdge,
+          //   child: VideoPlayer(controller.vedioController)),
         ),
       );
     }
   );
 }
 
-List<String> imageList = [
-  'assets/example/pexels-alfo-medeiros-13388273.jpg',
-  'assets/example/pexels-dương-nhân-1510149.jpg',
-  'assets/example/pexels-ismael-sánchez-2282000.jpg',
-  'assets/example/pexels-jan-koetsier-2724373.jpg',
-  'assets/example/pexels-magda-ehlers-613431.jpg',
-  'assets/example/pexels-mikey-dabro-1002669.jpg',
-  'assets/example/pexels-alfo-medeiros-13388273.jpg',
-  'assets/example/pexels-dương-nhân-1510149.jpg',
-  'assets/example/pexels-ismael-sánchez-2282000.jpg',
-  'assets/example/pexels-jan-koetsier-2724373.jpg',
-  'assets/example/pexels-magda-ehlers-613431.jpg',
-  'assets/example/pexels-mikey-dabro-1002669.jpg',
-];
+

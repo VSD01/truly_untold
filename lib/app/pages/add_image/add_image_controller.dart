@@ -41,6 +41,7 @@ String imageUrl='';
   ///Reference to document
   final docUser=FirebaseFirestore.instance.collection('gallery').doc();
   final json={
+    'id':docUser.id,
     'title':title,
     'imageUrl':imageUrl,
     'description':description,

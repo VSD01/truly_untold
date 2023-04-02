@@ -8,7 +8,8 @@ import 'package:get/get.dart';
 class AddVlogController extends GetxController {
   /// All coxntrollers here--------------------------
   var titleController = TextEditingController();
-  var descriptionController = TextEditingController();
+  var descriptionPara1Controller = TextEditingController();
+  var descriptionPara2Controller = TextEditingController();
   var subtitleController = TextEditingController();
 
   /// all variable here
@@ -118,7 +119,8 @@ class AddVlogController extends GetxController {
       'image2': ImageUrl2,
       'image3': ImageUrl3,
       'image4': ImageUrl4,
-      'description': descriptionController.text,
+      'descriptionPara1': descriptionPara1Controller.text,
+      'descriptionPara2':descriptionPara2Controller.text,
       'subTitle': subtitleController.text,
     };
 

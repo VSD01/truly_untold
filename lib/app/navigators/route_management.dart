@@ -23,8 +23,8 @@ class NavigateTo {
   }
 
     static void blogDetailsScreen(
-      {required String headImage,required String title,required String subtitle,required String article,}
+      {required String headImage,required String title,required String subtitle,required String articlePara1,required String articlePara2,}
     ){
-    Get.toNamed(Routes.blogsDetail,arguments: {'headImage':headImage,'title':title,'subtitle':subtitle,'article':article,});
+    Get.toNamed(Routes.blogsDetail,arguments: {'headImage':headImage,'title':title,'subtitle':subtitle,'articlePara1':articlePara1,'articlePara2':articlePara2,});
   }
 }

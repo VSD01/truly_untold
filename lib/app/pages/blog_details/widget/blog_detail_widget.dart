@@ -17,29 +17,38 @@ class BlogDetailsWidget extends StatelessWidget {
                onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
                child: SingleChildScrollView(
                 child: Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                  
-                    children: [
-                      Dimens.boxHeight5,
-                      Text(controller.title,style: AppTextStyle.black_20_700,),
-                       Dimens.boxHeight5,
-                      Container(
-                        height: Get.height*0.20,
-                        width: Get.width*0.20,
-                      
-                        decoration: BoxDecoration(
-                            color: Colors.grey,
-                          image: DecorationImage(fit: BoxFit.cover,image: NetworkImage(controller.coverImage))),
-                      ),
-                       Dimens.boxHeight5,
-                      Text(controller.subtitle,style: AppTextStyle.grey_17_400,),
-                       Dimens.boxHeight5,
-
+                  child: Container(
+                    width: Get.width/2,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                    
+                      children: [
                         Dimens.boxHeight5,
-                      Text(controller.description,style: AppTextStyle.black_17_400,),
-                       Dimens.boxHeight5,
-                    ],
+                        FittedBox(
+                          fit: BoxFit.fitWidth,
+                          child: Text(controller.title,style: AppTextStyle.black_30_700,)),
+                         Dimens.boxHeight5,
+                        Container(
+                          height: Get.height*0.50,
+                          width: Get.width*0.50,
+                        
+                          decoration: BoxDecoration(
+                              color: Colors.grey,
+                            image: DecorationImage(fit: BoxFit.cover,image: NetworkImage(controller.coverImage))),
+                        ),
+                         Dimens.boxHeight5,
+                        Text(controller.subtitle,style: AppTextStyle.grey_17_400,),
+                         Dimens.boxHeight5,
+                  
+                          Dimens.boxHeight5,
+                        Text(controller.descriptionPara1,style: AppTextStyle.black_17_400,textAlign: TextAlign.center,),
+                         Dimens.boxHeight5,
+                         Dimens.boxHeight5,
+                        Text(controller.descriptionPara2,style: AppTextStyle.black_17_400,textAlign: TextAlign.center,),
+                         Dimens.boxHeight5,
+
+                      ],
+                    ),
                   ),
                 ),
                ),

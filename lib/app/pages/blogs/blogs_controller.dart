@@ -18,7 +18,8 @@ class BlogsController extends GetxController {
 
 class BlogsResponse {
   BlogsResponse({
-    required this.description,
+    required this.descriptionPara1,
+    required this.descriptionPara2,
     required this.id,
     required this.subtitle,
     required this.title,
@@ -29,7 +30,8 @@ class BlogsResponse {
   });
   String id;
   final String title;
-  final String description;
+  final String descriptionPara1;
+  final String descriptionPara2;
   final String subtitle;
   final String coverImage;
   final String image2;
@@ -37,7 +39,8 @@ class BlogsResponse {
   final String image4;
 
   static BlogsResponse fromJson(Map<String, dynamic> json) => BlogsResponse(
-        description: json['description'],
+        descriptionPara1: json['descriptionPara1'],
+        descriptionPara2: json['descriptionPara2'],
         id: json['id'],
         subtitle:json['subTitle'],
         title: json['title'],

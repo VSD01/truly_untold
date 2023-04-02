@@ -31,6 +31,11 @@ class AppTextStyle {
     fontSize: 17,
     fontWeight: FontWeight.normal,
   );
+   static TextStyle black_14_400 = GoogleFonts.ptSans(
+    color: Colors.black,
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+  );
 
   static TextStyle grey_17_400 = GoogleFonts.ptSans(
     color: Colors.grey,
@@ -47,6 +52,12 @@ class AppTextStyle {
   static TextStyle black_20_700 = GoogleFonts.ptSans(
     color: Colors.black,
     fontSize: 20,
+    fontWeight: FontWeight.bold,
+  );
+
+   static TextStyle black_30_700 = GoogleFonts.ptSans(
+    color: Colors.black,
+    fontSize: 30,
     fontWeight: FontWeight.bold,
   );
 }

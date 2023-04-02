@@ -6,5 +6,6 @@ class BlogDetailsController extends GetxController{
   var coverImage=Get.arguments['headImage'];
   var title=Get.arguments['title'];
   var subtitle=Get.arguments['subtitle'];
-  var description=Get.arguments['article'];
+  var descriptionPara1=Get.arguments['articlePara1'];
+  var descriptionPara2=Get.arguments['articlePara2'];
 }

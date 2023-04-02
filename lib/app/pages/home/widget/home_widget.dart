@@ -129,7 +129,7 @@ Widget bioWidget(BuildContext context) {
               'अगर आप हमारी दुनिया के बारे में सुनना पसंद करते हैं तो हमारे चैनल को अभी सब्सक्राइब करें',
               textStyle: TextStyle(
                 color: Colors.white,
-                fontSize: Responsive.isMobile(context) ? 12 : 17,
+                fontSize: Responsive.isMobile(context) ? 12 : 15,
                 fontWeight: FontWeight.w500,
               ),
               speed: Duration(milliseconds: 60),
