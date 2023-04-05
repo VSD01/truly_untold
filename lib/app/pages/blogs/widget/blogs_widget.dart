@@ -53,175 +53,31 @@ class BlogsWidget extends StatelessWidget {
                                 SizedBox(
                                   height: Get.height * 0.05,
                                 ),
-                                Row(
+                                Responsive.isMobile(context)||Responsive.isTablet(context)?
+                                
+                                Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Expanded(
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          NavigateTo.blogDetailsScreen(
-                                            headImage: user[0].coverImage,
-                                            title: user[0].title,
-                                            subtitle: user[0].subtitle,
-                                            articlePara1:
-                                                user[0].descriptionPara1,
-                                            articlePara2:
-                                                user[0].descriptionPara2,
-                                          );
-                                        },
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            OnHover(builder: ((isHovered) {
-                                              return Stack(
-                                                children: [
-                                                  Container(
-                                                    height: Get.height * 0.50,
-                                                    width: Get.width / 2,
-                                                    decoration: BoxDecoration(
-                                                        image: DecorationImage(
-                                                            fit: BoxFit.cover,
-                                                            image: NetworkImage(
-                                                                user[0]
-                                                                    .coverImage))),
-                                                  ),
-                                                  isHovered
-                                                      ? Container(
-                                                          alignment:
-                                                              Alignment.center,
-                                                          height:
-                                                              Get.height * 0.50,
-                                                          width: Get.width / 2,
-                                                          color: Colors.white
-                                                              .withOpacity(0.9),
-                                                          child: Chip(
-                                                              label: Text(
-                                                            'Explore',
-                                                            style: AppTextStyle
-                                                                .black_20_700,
-                                                          )),
-                                                        )
-                                                      : SizedBox(),
-                                                ],
-                                              );
-                                            })),
-                                            SizedBox(
-                                              height: Get.height * 0.02,
-                                            ),
-                                            Text(user[0].title,
-                                                style:
-                                                    AppTextStyle.white_30_700),
-                                            SizedBox(
-                                              height: Get.height * 0.02,
-                                            ),
-                                            Text(
-                                              user[0].subtitle,
-                                              style: AppTextStyle.white_17_400,
-                                            ),
-                                            SizedBox(
-                                              height: Get.height * 0.02,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
+                                   /// big blog screen============
+                                   bigBlogScreen(user: user),
                                     SizedBox(
                                       width: Get.width * 0.03,
                                     ),
-                                    Expanded(
-                                      child: ListView.separated(
-                                          shrinkWrap: true,
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            if (index.isGreaterThan(3))
-                                              return Container();
-                                            if (index.isLowerThan(1))
-                                              return Container();
-                                            return GestureDetector(
-                                              onTap: () {
-                                                NavigateTo.blogDetailsScreen(
-                                                  headImage:
-                                                      user[index].coverImage,
-                                                  title: user[index].title,
-                                                  subtitle:
-                                                      user[index].subtitle,
-                                                  articlePara1:
-                                                      user[0].descriptionPara1,
-                                                  articlePara2:
-                                                      user[0].descriptionPara2,
-                                                );
-                                              },
-                                              child: Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Expanded(
-                                                      flex: 1,
-                                                      child: OnHover(
-                                                        builder: (isHovered) {
-                                                          return Stack(
-                                                            children: [
-                                                              Container(
-                                                                height:
-                                                                    Get.height *
-                                                                        0.15,
-                                                                decoration: BoxDecoration(
-                                                                    color: Colors
-                                                                        .grey,
-                                                                    image: DecorationImage(
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                        image: NetworkImage(
-                                                                            user[index].coverImage))),
-                                                              ),
-                                                              isHovered
-                                                                  ? Container(
-                                                                      height: Get
-                                                                              .height *
-                                                                          0.15,
-                                                                      alignment:
-                                                                          Alignment
-                                                                              .center,
-                                                                      color: Colors
-                                                                          .white
-                                                                          .withOpacity(
-                                                                              0.9),
-                                                                      child: Chip(
-                                                                          label: Text(
-                                                                        'Explore',
-                                                                        style: AppTextStyle
-                                                                            .black_20_700,
-                                                                      )),
-                                                                    )
-                                                                  : SizedBox(),
-                                                            ],
-                                                          );
-                                                        },
-                                                      )),
-                                                  SizedBox(
-                                                    width: Get.width * 0.02,
-                                                  ),
-                                                  Expanded(
-                                                      flex: 2,
-                                                      child: Text(
-                                                        user[index].title,
-                                                        style: AppTextStyle
-                                                            .white_30_700,
-                                                      ))
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                          separatorBuilder:
-                                              (BuildContext context,
-                                                  int index) {
-                                            return SizedBox(
-                                              height: Get.height * 0.02,
-                                            );
-                                          },
-                                          itemCount: user.length),
-                                    )
+                                    /// Blog list=====================
+                                    blogList(user: user),
+                                  ],
+                                )
+                                :
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                   /// big blog screen============
+                                   Expanded(child: bigBlogScreen(user: user)),
+                                    SizedBox(
+                                      width: Get.width * 0.03,
+                                    ),
+                                    /// Blog list=====================
+                                    Expanded(child: blogList(user: user)),
                                   ],
                                 ),
                               ],
@@ -326,6 +182,175 @@ class BlogsWidget extends StatelessWidget {
       );
     });
   }
+}
+
+
+
+Widget bigBlogScreen({required List user}){
+  return  GestureDetector(
+    onTap: () {
+      NavigateTo.blogDetailsScreen(
+        headImage: user[0].coverImage,
+        title: user[0].title,
+        subtitle: user[0].subtitle,
+        articlePara1:
+            user[0].descriptionPara1,
+        articlePara2:
+            user[0].descriptionPara2,
+      );
+    },
+    child: Column(
+      crossAxisAlignment:
+          CrossAxisAlignment.start,
+      children: [
+        OnHover(builder: ((isHovered) {
+          return Stack(
+            children: [
+              Container(
+                height: Get.height * 0.50,
+               
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                            user[0]
+                                .coverImage))),
+              ),
+              isHovered
+                  ? Container(
+                      alignment:
+                          Alignment.center,
+                      height:
+                          Get.height * 0.50,
+                      width: Get.width / 2,
+                      color: Colors.white
+                          .withOpacity(0.9),
+                      child: Chip(
+                          label: Text(
+                        'Explore',
+                        style: AppTextStyle
+                            .black_20_700,
+                      )),
+                    )
+                  : SizedBox(),
+            ],
+          );
+        })),
+        SizedBox(
+          height: Get.height * 0.02,
+        ),
+        Text(user[0].title,
+            style:
+                AppTextStyle.white_30_700),
+        SizedBox(
+          height: Get.height * 0.02,
+        ),
+        Text(
+          user[0].subtitle,
+          style: AppTextStyle.white_17_400,
+        ),
+        SizedBox(
+          height: Get.height * 0.02,
+        ),
+      ],
+    ),
+  );
+}
+
+
+/// blog list widget here============================
+Widget blogList({required List user}){
+  return ListView.separated(
+      shrinkWrap: true,
+      itemBuilder: (BuildContext context,
+          int index) {
+        if (index.isGreaterThan(3))
+          return Container();
+        if (index.isLowerThan(1))
+          return Container();
+        return GestureDetector(
+          onTap: () {
+            NavigateTo.blogDetailsScreen(
+              headImage:
+                  user[index].coverImage,
+              title: user[index].title,
+              subtitle:
+                  user[index].subtitle,
+              articlePara1:
+                  user[0].descriptionPara1,
+              articlePara2:
+                  user[0].descriptionPara2,
+            );
+          },
+          child: Row(
+            crossAxisAlignment:
+                CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                  flex: 1,
+                  child: OnHover(
+                    builder: (isHovered) {
+                      return Stack(
+                        children: [
+                          Container(
+                            height:
+                                Get.height *
+                                    0.15,
+                            decoration: BoxDecoration(
+                                color: Colors
+                                    .grey,
+                                image: DecorationImage(
+                                    fit: BoxFit
+                                        .cover,
+                                    image: NetworkImage(
+                                        user[index].coverImage))),
+                          ),
+                          isHovered
+                              ? Container(
+                                  height: Get
+                                          .height *
+                                      0.15,
+                                  alignment:
+                                      Alignment
+                                          .center,
+                                  color: Colors
+                                      .white
+                                      .withOpacity(
+                                          0.9),
+                                  child: Chip(
+                                      label: Text(
+                                    'Explore',
+                                    style: AppTextStyle
+                                        .black_20_700,
+                                  )),
+                                )
+                              : SizedBox(),
+                        ],
+                      );
+                    },
+                  )),
+              SizedBox(
+                width: Get.width * 0.02,
+              ),
+              Expanded(
+                  flex: 2,
+                  child: Text(
+                    user[index].title,
+                    style: AppTextStyle
+                        .white_30_700,
+                  ))
+            ],
+          ),
+        );
+      },
+      separatorBuilder:
+          (BuildContext context,
+              int index) {
+        return SizedBox(
+          height: Get.height * 0.02,
+        );
+      },
+      itemCount: user.length);
 }
 
 class OnHover extends StatefulWidget {

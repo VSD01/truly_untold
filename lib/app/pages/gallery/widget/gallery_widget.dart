@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:video_player/video_player.dart';
-import 'dart:math' as math;
 
 class GalleryWidget extends StatelessWidget {
   const GalleryWidget({super.key});
@@ -18,168 +15,203 @@ class GalleryWidget extends StatelessWidget {
           FocusManager.instance.primaryFocus!.unfocus();
         },
         child: SingleChildScrollView(
-          child: Container(
-              alignment: Alignment.centerRight,
-              color: Colors.white.withOpacity(0.8),
-              child: Column(
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                        height: Dimens.percentHeight(.65),
-                        width: Get.width,
-                      ),
-                      Container(
-                        color: Colors.black,
-                        height: Dimens.percentHeight(.50),
-                        width: Get.width,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Image.asset(
-                                'assets/side new  ankur.jpg',
+          child: StreamBuilder<List<GalleryResponse>>(
+              stream: controller.allImages(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                   final imageData = snapshot.data!;
+                if (imageData.isEmpty) {
+                  return Container(
+                    height: Get.height,
+                    child: Center(
+                      child: Text('No Images in gallery yet'),
+                    ),
+                  );
+                } else {
+                  return Container(
+                      alignment: Alignment.centerRight,
+                      color: Colors.white.withOpacity(0.8),
+                      child: Column(
+                        children: [
+                          Stack(
+                            children: [
+                              Container(
+                                height: Dimens.percentHeight(.65),
+                                width: Get.width,
                               ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                child: Image.asset(
-                                  'assets/logo.png',
-                                  height: Get.height * 0.20,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Image.asset(
-                                'assets/side new  vishal.jpg',
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        left: 0,
-                        child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    Responsive.isMobile(context) ? 30 : 200),
-                            child: profileAvatar()),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(right: 30, top: 30),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: GestureDetector(
-                              onTap: () {
-                                Get.back();
-                                Get.find<HomeController>()
-                                    .drawerPageKey
-                                    .currentState!
-                                    .openDrawer();
-                              },
-                              child: Icon(
-                                Icons.cancel_rounded,
-                                color: Colors.white,
-                              )),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Dimens.boxHeight10,
-                  StreamBuilder<List<GalleryResponse>>(
-                      stream: controller.allImages(),
-                      builder: (context, snapshot) {
-                        final imageData = snapshot.data!;
-
-                        return Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    Responsive.isMobile(context) ? 30 : 200),
-                            width: Get.width,
-                            child: GridView.builder(
-                                shrinkWrap: true,
-                                primary: false,
-                                itemCount: imageData.length,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisSpacing: 40,
-                                  mainAxisSpacing:
-                                      Responsive.isMobile(context) ||
-                                              Responsive.isTablet(context)
-                                          ? 120
-                                          : 4,
-                                  crossAxisCount:
-                                      Responsive.isMobile(context) ||
-                                              Responsive.isTablet(context)
-                                          ? 2
-                                          : 4,
-                                ),
-                                itemBuilder: (BuildContext context, int index) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      // NavigateTo.blogDetailsScreen(
-                                      //   headImage:
-                                      //       finalList[index].coverImage,
-                                      //   title: finalList[index].title,
-                                      //   subtitle: finalList[index].subtitle,
-                                      //   article: finalList[index].description,
-                                      // );
-                                    },
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        OnHover(builder: ((isHovered) {
-                                          return Stack(
-                                            children: [
-                                              Image(
-                                                image: NetworkImage(
-                                                    imageData[index].imageUrl),
-                                                height: Get.height * 0.20,
-                                                width: Get.width,
-                                                fit: BoxFit.cover,
-                                              ),
-                                              isHovered
-                                                  ? Container(
-                                                      height: Get.height * 0.20,
-                                                      alignment:
-                                                          Alignment.center,
-                                                      color: Colors.white
-                                                          .withOpacity(0.9),
-                                                      child: Chip(
-                                                          label: Text(
-                                                        'Explore',
-                                                        style: AppTextStyle
-                                                            .black_20_700,
-                                                      )),
-                                                    )
-                                                  : SizedBox(),
-                                            ],
-                                          );
-                                        })),
-                                        SizedBox(
-                                          height: Get.height * 0.005,
-                                        ),
-                                        Text(
-                                          imageData[index].title,
-                                          style: AppTextStyle.black_17_400,
-                                        ),
-                                        SizedBox(
-                                          height: Get.height * 0.005,
-                                        ),
-                                        Text(
-                                          imageData[index].description,
-                                          style: AppTextStyle.grey_17_400,
-                                        ),
-                                      ],
+                              Container(
+                                color: Colors.black,
+                                height: Dimens.percentHeight(.50),
+                                width: Get.width,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Image.asset(
+                                        'assets/side new  ankur.jpg',
+                                      ),
                                     ),
-                                  );
-                                }));
-                      }),
-                  Dimens.boxHeight10,
-                ],
-              )),
+                                    Expanded(
+                                      child: Container(
+                                        child: Image.asset(
+                                          'assets/logo.png',
+                                          height: Get.height * 0.20,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Image.asset(
+                                        'assets/side new  vishal.jpg',
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                left: 0,
+                                child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: Responsive.isMobile(context)
+                                            ? 30
+                                            : 200),
+                                    child: profileAvatar()),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(right: 30, top: 30),
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: GestureDetector(
+                                      onTap: () {
+                                        Get.back();
+                                        Get.find<HomeController>()
+                                            .drawerPageKey
+                                            .currentState!
+                                            .openDrawer();
+                                      },
+                                      child: Icon(
+                                        Icons.cancel_rounded,
+                                        color: Colors.white,
+                                      )),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Dimens.boxHeight10,
+                          StreamBuilder<List<GalleryResponse>>(
+                              stream: controller.allImages(),
+                              builder: (context, snapshot) {
+                                final imageData = snapshot.data!;
+
+                                return Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: Responsive.isMobile(context)
+                                            ? 30
+                                            : 200),
+                                    width: Get.width,
+                                    child: GridView.builder(
+                                        shrinkWrap: true,
+                                        primary: false,
+                                        itemCount: imageData.length,
+                                        gridDelegate:
+                                            SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisSpacing: 40,
+                                          mainAxisSpacing: Responsive.isMobile(
+                                                      context) ||
+                                                  Responsive.isTablet(context)
+                                              ? 120
+                                              : 4,
+                                          crossAxisCount: Responsive.isMobile(
+                                                      context) ||
+                                                  Responsive.isTablet(context)
+                                              ? 2
+                                              : 4,
+                                        ),
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
+                                          return GestureDetector(
+                                            onTap: () {
+                                              // NavigateTo.blogDetailsScreen(
+                                              //   headImage:
+                                              //       finalList[index].coverImage,
+                                              //   title: finalList[index].title,
+                                              //   subtitle: finalList[index].subtitle,
+                                              //   article: finalList[index].description,
+                                              // );
+                                            },
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                OnHover(builder: ((isHovered) {
+                                                  return Stack(
+                                                    children: [
+                                                      imageData[index]
+                                                                .imageUrl.isNotEmpty?
+                                                      Image(
+                                                        image: NetworkImage(
+                                                            imageData[index]
+                                                                .imageUrl),
+                                                        height:
+                                                            Get.height * 0.20,
+                                                        width: Get.width,
+                                                        fit: BoxFit.cover,
+                                                      ):Container(),
+                                                      isHovered
+                                                          ? Container(
+                                                              height:
+                                                                  Get.height *
+                                                                      0.20,
+                                                              alignment:
+                                                                  Alignment
+                                                                      .center,
+                                                              color: Colors
+                                                                  .white
+                                                                  .withOpacity(
+                                                                      0.9),
+                                                              child: Chip(
+                                                                  label: Text(
+                                                                'Explore',
+                                                                style: AppTextStyle
+                                                                    .black_20_700,
+                                                              )),
+                                                            )
+                                                          : SizedBox(),
+                                                    ],
+                                                  );
+                                                })),
+                                                SizedBox(
+                                                  height: Get.height * 0.005,
+                                                ),
+                                                Text(
+                                                  imageData[index].title,
+                                                  style:
+                                                      AppTextStyle.black_17_400,
+                                                ),
+                                                SizedBox(
+                                                  height: Get.height * 0.005,
+                                                ),
+                                                Text(
+                                                  imageData[index].description,
+                                                  style:
+                                                      AppTextStyle.grey_17_400,
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        }));
+                              }),
+                          Dimens.boxHeight10,
+                        ],
+                      ));
+                }
+                } else {
+                  return Container(
+                      height: Get.height,
+                      child: Center(child: const CircularProgressIndicator()));
+                }
+               
+              }),
         ),
       ));
     });

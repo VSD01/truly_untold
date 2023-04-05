@@ -41,7 +41,7 @@ class BlogDetailsWidget extends StatelessWidget {
                          Dimens.boxHeight5,
                   
                           Dimens.boxHeight5,
-                        Text(controller.descriptionPara1,style: AppTextStyle.black_17_400,textAlign: TextAlign.center,),
+                        Text(controller.result,style: AppTextStyle.black_17_400,textAlign: TextAlign.center,softWrap: true, ),
                          Dimens.boxHeight5,
                          Dimens.boxHeight5,
                         Text(controller.descriptionPara2,style: AppTextStyle.black_17_400,textAlign: TextAlign.center,),

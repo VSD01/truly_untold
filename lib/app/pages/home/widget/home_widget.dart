@@ -124,9 +124,10 @@ Widget bioWidget(BuildContext context) {
         isRepeatingAnimation: false,
         animatedTexts: [
           TypewriterAnimatedText(
-              'सत्य को किसी प्रमाण की आवश्यकता नहीं होती, लेकिन अक्सर लोग इस पर विश्वास करने से डरते हैं और विश्वास करने से इंकार कर देते हैं।'
-              'लेकिन कभी-कभी सच को साबित करना होता है, इसलिए चाहे जो भी हो, हम ट्रूली अनटोल्ड में आपका स्वागत करते हैं और दुनिया\n\n में हो रही किसी भी घटना और ऐसी ही कुछ कहानियों का सच सामने लाने की कोशिश करते हैं। हम उन कहानियों पर भी चर्चा करेंगे जो आपको दंग कर देंगी।'
-              'अगर आप हमारी दुनिया के बारे में सुनना पसंद करते हैं तो हमारे चैनल को अभी सब्सक्राइब करें',
+             'Let\'s take a bite out of the terrible, harsh truth. While there is no requirement for' 
+             'proof when it comes to the truth, many individuals nevertheless refuse to accept it at face value. Let\'s explore the world together,'
+              'looking for funny and intriguing information. \n\n If you are interested in hearing' 
+              'more about our universe, "THE TRULY UNTOLD," then you should subscribe to our Channel right away.',
               textStyle: TextStyle(
                 color: Colors.white,
                 fontSize: Responsive.isMobile(context) ? 12 : 15,

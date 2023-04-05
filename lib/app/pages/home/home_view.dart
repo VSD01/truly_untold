@@ -38,15 +38,12 @@ Widget webAppBar() {
             GestureDetector(onTap: () {
               Get.dialog(AboutScreen());
             }, child: OnHover(builder: ((isHovered) {
-              return Tooltip(
-                message: 'About creators',
-                child: Text(
-                  'About',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold),
-                ),
+              return Text(
+                'About',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold),
               );
             }))),
             SizedBox(
@@ -56,16 +53,15 @@ Widget webAppBar() {
               onTap: () {
                 NavigateTo.galleryScreen();
               },
-              child: Tooltip(
-                message: 'Gallery',
-                child: Text(
-                  'Gallery',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
+              child: OnHover(builder: ((isHovered) {
+                return Text(
+                'Gallery',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold),
+              );
+              }))
             ),
             SizedBox(
               width: 100,
@@ -74,16 +70,15 @@ Widget webAppBar() {
               onTap: () {
                 NavigateTo.blogsScreen();
               },
-              child: Tooltip(
-                message: 'Blog',
-                child: Text(
-                  'Blog',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
+              child: OnHover(builder: ((isHovered) {
+                return Text(
+                'Blog',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold),
+              );
+              }))
             ),
             SizedBox(
               width: 100,
@@ -92,16 +87,15 @@ Widget webAppBar() {
               onTap: () {
                 Get.dialog(ContactScreen());
               },
-              child: Tooltip(
-                message: 'Contact',
-                child: Text(
-                  'Contact',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
+              child: OnHover(builder: ((isHovered) {
+                return Text(
+                'Contact',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold),
+              );
+              }))
             ),
             controller.isIpmatched == true
                 ? SizedBox(
@@ -159,13 +153,15 @@ Widget webAppBar() {
                         ),
                       ));
                     },
-                    child: Text(
+                    child: OnHover(builder: ((isHovered) {
+                      return Text(
                       'Admin',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 17,
                           fontWeight: FontWeight.bold),
-                    ),
+                    );
+                    }))
                   )
                 : Container(),
           ],

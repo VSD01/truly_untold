@@ -42,9 +42,9 @@ class GalleryResponse {
  
 
   static GalleryResponse fromJson(Map<String, dynamic> json) => GalleryResponse(
-        description: json['description'],
+        description: json['description'] as String ? ?? '',
         id: json['id'],
         imageUrl:json['imageUrl'],
-        title: json['title'],
+        title: json['title'] as String ? ?? '',
       );
 }

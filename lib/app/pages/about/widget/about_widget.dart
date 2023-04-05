@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class AboutWidget extends StatelessWidget {
   const AboutWidget({super.key});
@@ -139,6 +140,8 @@ Widget webProfileSection(
             const Divider(
               color: Colors.black,
             ),
+      
+
             Container(
               height:
                   Responsive.isMobile(context) || Responsive.isTablet(context)
