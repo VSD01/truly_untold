@@ -20,6 +20,7 @@ class BlogsResponse {
   BlogsResponse({
     required this.descriptionPara1,
     required this.descriptionPara2,
+    required this.date,
     required this.id,
     required this.subtitle,
     required this.title,
@@ -32,6 +33,7 @@ class BlogsResponse {
   final String title;
   final String descriptionPara1;
   final String descriptionPara2;
+  final String date;
   final String subtitle;
   final String coverImage;
   final String image2;
@@ -41,6 +43,7 @@ class BlogsResponse {
   static BlogsResponse fromJson(Map<String, dynamic> json) => BlogsResponse(
         descriptionPara1: json['descriptionPara1'],
         descriptionPara2: json['descriptionPara2'],
+        date: json['date'],
         id: json['id'],
         subtitle:json['subTitle'],
         title: json['title'],

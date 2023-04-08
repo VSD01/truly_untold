@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
 
@@ -18,15 +16,12 @@ class BlogDetailsWidget extends StatelessWidget {
                child: SingleChildScrollView(
                 child: Center(
                   child: Container(
-                    width: Get.width/2,
+                    width: Get.width/3,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                    
                       children: [
                         Dimens.boxHeight5,
-                        FittedBox(
-                          fit: BoxFit.fitWidth,
-                          child: Text(controller.title,style: AppTextStyle.black_30_700,)),
+                        Text(controller.title,style: AppTextStyle.black_50_700,maxLines: 2,textAlign: TextAlign.center,),
                          Dimens.boxHeight5,
                         Container(
                           height: Get.height*0.50,
@@ -41,11 +36,41 @@ class BlogDetailsWidget extends StatelessWidget {
                          Dimens.boxHeight5,
                   
                           Dimens.boxHeight5,
-                        Text(controller.result,style: AppTextStyle.black_17_400,textAlign: TextAlign.center,softWrap: true, ),
+                        Text(controller.result,style: AppTextStyle.black_19_400,textAlign: TextAlign.left,softWrap: true, ),
                          Dimens.boxHeight5,
-                         Dimens.boxHeight5,
-                        Text(controller.descriptionPara2,style: AppTextStyle.black_17_400,textAlign: TextAlign.center,),
-                         Dimens.boxHeight5,
+                          Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                    height: Get.height*0.20,                    
+                                    decoration: BoxDecoration(
+                                        color: Colors.grey,
+                                      image: DecorationImage(fit: BoxFit.cover,image: NetworkImage(controller.image1))),
+                                                          ),
+                                  ),
+                        Dimens.boxWidth10,
+                         Expanded(
+                           child: Container(
+                                height: Get.height*0.20,               
+                                decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                  image: DecorationImage(fit: BoxFit.cover,image: NetworkImage(controller.image2))),
+                                                 ),
+                         ),
+                                ],
+                              ),
+                              Dimens.boxHeight10,
+                               Container(
+                              height: Get.height*0.20,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey,
+                                image: DecorationImage(fit: BoxFit.cover,image: NetworkImage(controller.image3))),
+                        ),
+                            ],
+                          ),
+                       Dimens.boxHeight10,
 
                       ],
                     ),

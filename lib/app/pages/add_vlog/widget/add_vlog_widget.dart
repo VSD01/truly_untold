@@ -132,6 +132,7 @@ class AddVlogWidget extends StatelessWidget {
                     ),
                   ),
                    TextFormField(
+                    maxLines: 10,
                     controller: controller.subtitleController,
                     decoration: const InputDecoration(
                       hintText: 'Subtitle...',
@@ -152,18 +153,7 @@ class AddVlogWidget extends StatelessWidget {
                     ),
                   ),
 
-                  Container(
-                    child: TextFormField(
-                      maxLines: 50,
-                      controller: controller.descriptionPara2Controller,
-                      focusNode: controller.isFocused,
-                      decoration: const InputDecoration(
-                        hintText: 'Start writing here for para 2...',
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                      ),
-                    ),
-                  ),
+                
                 ],
               ),
             ),

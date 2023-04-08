@@ -4,6 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class AddVlogController extends GetxController {
   /// All coxntrollers here--------------------------
@@ -115,6 +116,7 @@ class AddVlogController extends GetxController {
     final json = {
       'id': docUser.id,
       'title': titleController.text,
+      'date': DateFormat.yMMMEd().format(DateTime.now()),
       'coverImage': coverImageUrl,
       'image2': ImageUrl2,
       'image3': ImageUrl3,
