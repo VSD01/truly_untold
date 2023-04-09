@@ -10,7 +10,7 @@ class GalleryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _key = GlobalKey();
+ 
     return GetBuilder<GalleryController>(builder: (controller) {
       return SafeArea(
           child: GestureDetector(
@@ -82,7 +82,7 @@ class GalleryWidget extends StatelessWidget {
                                       child: profileAvatar()),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(right: 30, top: 30),
+                                  padding: const EdgeInsets.only(right: 30, top: 30),
                                   child: Align(
                                     alignment: Alignment.centerRight,
                                     child: GestureDetector(
