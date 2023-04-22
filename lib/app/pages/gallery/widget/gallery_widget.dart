@@ -3,14 +3,13 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
-
+import 'package:flip_card/flip_card.dart';
 
 class GalleryWidget extends StatelessWidget {
   const GalleryWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
- 
     return GetBuilder<GalleryController>(builder: (controller) {
       return SafeArea(
           child: GestureDetector(
@@ -26,7 +25,7 @@ class GalleryWidget extends StatelessWidget {
                   if (imageData.isEmpty) {
                     return Container(
                       height: Get.height,
-                      child: Center(
+                      child: const Center(
                         child: Text('No Images in gallery yet'),
                       ),
                     );
@@ -82,7 +81,8 @@ class GalleryWidget extends StatelessWidget {
                                       child: profileAvatar()),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 30, top: 30),
+                                  padding:
+                                      const EdgeInsets.only(right: 30, top: 30),
                                   child: Align(
                                     alignment: Alignment.centerRight,
                                     child: GestureDetector(
@@ -175,71 +175,81 @@ class GalleryWidget extends StatelessWidget {
                                                             ? GestureDetector(
                                                                 onTap: () {
                                                                   Get.dialog(
-                                                                    Scaffold(
-      backgroundColor: Colors.transparent,
-      body: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 15.0, sigmaY: 15.0),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 100),
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                imageData[index].imageUrl.isEmpty
-                    ? Container()
-                    : Image(
-                        image: NetworkImage(imageData[index].imageUrl),
-                        height: Get.height / 2,
-                        width: Get.width / 2,
-                        fit: BoxFit.cover,
-                      ),
-                SizedBox(
-                  height: Get.height * 0.005,
-                ),
-                Text(
-                  imageData[index].title.capitalizeFirst!.trim(),
-                  style: Responsive.isMobile(context) ||
-                          Responsive.isTablet(context)
-                      ? AppTextStyle.white_14_700
-                      : AppTextStyle.white_17_700,
-                ),
-                SizedBox(
-                  height: Get.height * 0.005,
-                ),
-                Text(
-                  imageData[index].description.trim(),
-                  style: Responsive.isMobile(context) ||
-                          Responsive.isTablet(context)
-                      ? AppTextStyle.white_14_700
-                      : AppTextStyle.white_17_400,
-                ),
-                SizedBox(
-                  height: Get.height * 0.03,
-                ),
-                GestureDetector(
-                  onTap: () => Get.back(),
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 50,
-                    width: Get.width / 3,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Text(
-                      'Close',
-                      style: AppTextStyle.white_14_700,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
-    ),
-                                                                    
+                                                                    GestureDetector(
+                                                                      onTap:
+                                                                          () {
+                                                                        Get.back();
+                                                                      },
+                                                                      child:
+                                                                          Scaffold(
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        body:
+                                                                            BackdropFilter(
+                                                                          filter: ImageFilter.blur(
+                                                                              sigmaX: 15.0,
+                                                                              sigmaY: 15.0),
+                                                                          child:
+                                                                              Container(
+                                                                            padding:
+                                                                                const EdgeInsets.symmetric(horizontal: 100),
+                                                                            child:
+                                                                                Center(
+                                                                              child: Column(
+                                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                                                children: [
+                                                                                  imageData[index].imageUrl.isEmpty
+                                                                                      ? Container()
+                                                                                      : Image(
+                                                                                          image: NetworkImage(imageData[index].imageUrl),
+                                                                                          height: Get.height / 2,
+                                                                                          width: Get.width / 2,
+                                                                                        ),
+                                                                                  SizedBox(
+                                                                                    height: Get.height * 0.005,
+                                                                                  ),
+                                                                                  imageData[index].title.isEmpty
+                                                                                      ? Container()
+                                                                                      : Text(
+                                                                                          imageData[index].title.capitalizeFirst!.trim(),
+                                                                                          style: Responsive.isMobile(context) || Responsive.isTablet(context) ? AppTextStyle.white_14_700 : AppTextStyle.white_17_700,
+                                                                                        ),
+                                                                                  SizedBox(
+                                                                                    height: Get.height * 0.005,
+                                                                                  ),
+                                                                                  imageData[index].description.isEmpty
+                                                                                      ? Container()
+                                                                                      : Text(
+                                                                                          imageData[index].description.trim(),
+                                                                                          style: Responsive.isMobile(context) || Responsive.isTablet(context) ? AppTextStyle.white_14_700 : AppTextStyle.white_17_400,
+                                                                                        ),
+                                                                                  SizedBox(
+                                                                                    height: Get.height * 0.03,
+                                                                                  ),
+                                                                                  GestureDetector(
+                                                                                    onTap: () => Get.back(),
+                                                                                    child: Container(
+                                                                                      alignment: Alignment.center,
+                                                                                      height: 50,
+                                                                                      width: Get.width / 3,
+                                                                                      decoration: BoxDecoration(
+                                                                                        border: Border.all(color: Colors.white),
+                                                                                        borderRadius: BorderRadius.circular(20),
+                                                                                      ),
+                                                                                      child: Text(
+                                                                                        'Close',
+                                                                                        style: AppTextStyle.white_14_700,
+                                                                                      ),
+                                                                                    ),
+                                                                                  )
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
                                                                   );
                                                                 },
                                                                 child:
@@ -323,30 +333,36 @@ class GalleryWidget extends StatelessWidget {
 
 Widget profileAvatar() {
   return GetBuilder<GalleryController>(builder: (controller) {
-    return GestureDetector(
-      onTap: () {
-        // controller.vedioController.value.isPlaying
-        //     ? controller.vedioController.pause()
-        //     : controller.vedioController.play();
-        controller.update();
-      },
-      child: Container(
-          decoration: BoxDecoration(
-            //   image: DecorationImage(image: AssetImage('assets/mine.png')),
-            color: Colors.black,
-            border: Border.all(color: Color(0xffcccccc), width: 5),
-            shape: BoxShape.circle,
-          ),
-          //height: Dimens.percentHeight(.30),
-          // width: Dimens.percentHeight(.30),
-          height: Get.height * 0.20,
-          width: Get.width * 0.05,
-          child: Image.asset('assets/logo.png')
-          // ClipRRect(
-          //  borderRadius: BorderRadius.circular(50),
-          //  clipBehavior: Clip.hardEdge,
-          //   child: VideoPlayer(controller.vedioController)),
-          ),
-    );
+    return FlipCard(
+     
+     controller: controller.flipController,
+      
+      front:  Container(
+         decoration: BoxDecoration(
+           color: Colors.black,
+           border: Border.all(color: Color(0xffcccccc), width: 5),
+           shape: BoxShape.circle,
+        ),
+         height: Get.height * 0.20,
+         width: Get.width * 0.05,
+         child: Image.asset('assets/logo.png')), back: Container(
+         decoration: BoxDecoration(
+           gradient: LinearGradient(colors: [Color(0xff891316),Color(0xff120203)],begin: Alignment.topCenter,end: Alignment.bottomCenter),
+           border: Border.all(color: Color(0xffcccccc), width: 5),
+           shape: BoxShape.circle,
+        ),
+         height: Get.height * 0.20,
+         width: Get.width * 0.05,
+         child: Image.asset('assets/logo.png')));
+    
+    // Container(
+    //     decoration: BoxDecoration(
+    //       color: Colors.black,
+    //       border: Border.all(color: Color(0xffcccccc), width: 5),
+    //       shape: BoxShape.circle,
+    //     ),
+    //     height: Get.height * 0.20,
+    //     width: Get.width * 0.05,
+    //     child: Image.asset('assets/logo.png'));
   });
 }

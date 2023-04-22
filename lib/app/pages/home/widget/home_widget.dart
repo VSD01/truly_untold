@@ -118,7 +118,9 @@ Widget centerImageWidget() {
 Widget bioWidget(BuildContext context) {
   return Expanded(
    
-    child: Container(
+    child: 
+    
+    Container(
       width: Dimens.percentHeight(.50),
       child: AnimatedTextKit(
         isRepeatingAnimation: false,
@@ -132,6 +134,7 @@ Widget bioWidget(BuildContext context) {
                 color: Colors.white,
                 fontSize: Responsive.isMobile(context) ? 12 : 15,
                 fontWeight: FontWeight.w500,
+               
               ),
               speed: Duration(milliseconds: 60),
               textAlign: TextAlign.center),

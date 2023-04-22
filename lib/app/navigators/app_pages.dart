@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
 import 'package:practise1/app/pages/add_vlog/add_vlog_binding.dart';
 import 'package:practise1/app/pages/add_vlog/add_vlog_view.dart';
+import 'package:practise1/app/pages/admin/admin_view.dart';
 
 class AppPages {
   static String initialRoute = Routes.home;
@@ -53,6 +54,14 @@ class AppPages {
       transitionDuration: transitionDuration,
       page: BlogDetailView.new,
       binding: BlogDetailsBinding(),
+      transition: Transition.fadeIn,
+    ),
+
+     GetPage<AdminScreen>(
+      name: Routes.admin,
+      transitionDuration: transitionDuration,
+      page: AdminScreen.new,
+     
       transition: Transition.fadeIn,
     ),
   ];

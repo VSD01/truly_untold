@@ -5,4 +5,5 @@ class Routes {
   static String addImage = '/addImage-screen';
   static String blogs = '/blogs-screen';
   static String blogsDetail = '/blogsDetail-screen';
+  static String admin = '/admin-screen';
 }

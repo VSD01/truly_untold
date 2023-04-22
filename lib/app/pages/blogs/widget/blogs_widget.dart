@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
+import 'package:practise1/app/pages/footer/footer_view.dart';
 import 'package:practise1/app/theme/app_textstyles.dart';
 
 class BlogsWidget extends StatelessWidget {
@@ -45,7 +47,7 @@ class BlogsWidget extends StatelessWidget {
                                     fit: BoxFit.fitWidth,
                                     child: Text('THE JOURNAL',
                                         style: AppTextStyle.veryLarge_700)),
-                                Divider(
+                                const Divider(
                                   color: Colors.grey,
                                   height: 0,
                                   thickness: 1,
@@ -114,6 +116,7 @@ class BlogsWidget extends StatelessWidget {
                                           articlePara1:
                                               user[0].descriptionPara1,
                                           image1: user[0].image2,
+                                          date: user[0].date,
                                           image2: user[0].image3,
                                           image3: user[0].image4,
                                         );
@@ -159,6 +162,13 @@ class BlogsWidget extends StatelessWidget {
                                             finalList[index].title,
                                             style: AppTextStyle.black_20_700,
                                           ),
+                                            SizedBox(
+                                            height: Get.height * 0.005,
+                                          ),
+                                          Text(
+                                            finalList[index].date,
+                                            style: AppTextStyle.black_12_400,
+                                          ),
                                           SizedBox(
                                             height: Get.height * 0.005,
                                           ),
@@ -171,6 +181,7 @@ class BlogsWidget extends StatelessWidget {
                                     );
                                   })),
                           Dimens.boxHeight10,
+                          FooterWidget(),
                         ],
                       );
                     }
@@ -189,68 +200,88 @@ class BlogsWidget extends StatelessWidget {
 }
 
 Widget bigBlogScreen({required List user}) {
-  return GestureDetector(
-    onTap: () {
-      NavigateTo.blogDetailsScreen(
-        headImage: user[0].coverImage,
-        title: user[0].title,
-        subtitle: user[0].subtitle,
-        articlePara1: user[0].descriptionPara1,
-        image1: user[0].image2,
-        image2: user[0].image3,
-        image3: user[0].image4,
-      );
-    },
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        OnHover(builder: ((isHovered) {
-          return Stack(
-            children: [
-              Container(
-                height: Get.height * 0.50,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(user[0].coverImage))),
-              ),
-              isHovered
-                  ? Container(
-                      alignment: Alignment.center,
-                      height: Get.height * 0.50,
-                      width: Get.width / 2,
-                      color: Colors.white.withOpacity(0.9),
-                      child: Chip(
-                          label: Text(
-                        'Explore',
-                        style: AppTextStyle.black_20_700,
-                      )),
-                    )
-                  : SizedBox(),
-            ],
-          );
-        })),
-         SizedBox(
-          height: Get.height * 0.02,
-        ),
-        Text(user[0].date, style: AppTextStyle.grey_12_400),
-        SizedBox(
-          height: Get.height * 0.02,
-        ),
-        Text(user[0].title, style: AppTextStyle.white_30_700),
-        SizedBox(
-          height: Get.height * 0.02,
-        ),
-        Text(
-          user[0].subtitle,
-          style: AppTextStyle.white_17_400,
-        ),
-        SizedBox(
-          height: Get.height * 0.02,
-        ),
-      ],
-    ),
-  );
+  return GetBuilder<BlogsController>(builder: (controller) {
+    return GestureDetector(
+      onTap: () {
+        NavigateTo.blogDetailsScreen(
+          headImage: user[0].coverImage,
+          title: user[0].title,
+          subtitle: user[0].subtitle,
+          articlePara1: user[0].descriptionPara1,
+          date: user[0].date,
+          image1: user[0].image2,
+          image2: user[0].image3,
+          image3: user[0].image4,
+        );
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          OnHover(builder: ((isHovered) {
+            return Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                Container(
+                  height: Get.height * 0.50,
+                  child: PageView.builder(
+                      controller: controller.pageController,
+                      onPageChanged: controller.updateDots,
+                      itemCount: 4,
+                      itemBuilder: (BuildContext context, int index) {
+                        List<String> bigContainerImages = [
+                          user[0].coverImage,
+                          user[0].image2,
+                          user[0].image3,
+                          user[0].image4,
+                        ];
+                        return Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: CachedNetworkImageProvider(
+                                      bigContainerImages[index]))),
+                        );
+                      }),
+                ),
+                buildDots(),
+                isHovered
+                    ? Container(
+                        alignment: Alignment.center,
+                        height: Get.height * 0.50,
+                        width: Get.width / 2,
+                        color: Colors.white.withOpacity(0.9),
+                        child: Chip(
+                            label: Text(
+                          'Explore',
+                          style: AppTextStyle.black_20_700,
+                        )),
+                      )
+                    : SizedBox(),
+              ],
+            );
+          })),
+          SizedBox(
+            height: Get.height * 0.02,
+          ),
+          Text(user[0].date, style: AppTextStyle.grey_12_400),
+          SizedBox(
+            height: Get.height * 0.02,
+          ),
+          Text(user[0].title, style: AppTextStyle.white_30_700),
+          SizedBox(
+            height: Get.height * 0.02,
+          ),
+          Text(
+            user[0].subtitle,
+            style: AppTextStyle.white_17_400,
+          ),
+          SizedBox(
+            height: Get.height * 0.02,
+          ),
+        ],
+      ),
+    );
+  });
 }
 
 /// blog list widget here============================
@@ -268,6 +299,7 @@ Widget blogList({required List user}) {
               subtitle: user[index].subtitle,
               articlePara1: user[index].descriptionPara1,
               image1: user[index].image2,
+              date: user[0].date,
               image2: user[index].image3,
               image3: user[index].image4,
             );
@@ -310,11 +342,31 @@ Widget blogList({required List user}) {
                 width: Get.width * 0.02,
               ),
               Expanded(
-                  flex: 2,
-                  child: Text(
-                    user[index].title,
-                    style: AppTextStyle.white_30_700,
-                  ))
+                flex: 2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      user[index].title,
+                      style: AppTextStyle.white_30_700,
+                    ),
+                    SizedBox(
+                      height : Get.height * 0.01,
+                    ),
+                    Text(
+                      user[index].subtitle,
+                      style: AppTextStyle.white_14_700,
+                    ),
+                    SizedBox(
+                      height : Get.height  * 0.02,
+                    ),
+                    Text(
+                      user[index].date,
+                      style: AppTextStyle.grey_12_400,
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         );
@@ -326,6 +378,33 @@ Widget blogList({required List user}) {
       },
       itemCount: user.length);
 }
+
+/// Dot builder ///
+Widget buildDots() {
+  return GetBuilder<BlogsController>(builder: (controller) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(4, (index) {
+          return Padding(
+            padding: EdgeInsets.fromLTRB(2, 0, 2, 0),
+            child: AnimatedContainer(
+              width: controller.currentPage == index ? 25 : 10,
+              curve: Curves.linear,
+              height: 10,
+              duration: Duration(milliseconds: 400),
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
+            ),
+          );
+        }),
+      ),
+    );
+  });
+}
+
+/// Hover class ///
 
 class OnHover extends StatefulWidget {
   final Widget Function(bool isHovered) builder;

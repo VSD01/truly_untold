@@ -123,12 +123,12 @@ Widget webContactSection(context) {
             ),
             Dimens.boxHeight5,
             Text(
-              'example@gmail.com',
+              'thetrulyuntold@gmail.com',
               style: AppTextStyle.black_17_400,
             ),
             Dimens.boxHeight5,
             Text(
-              '+91 9245678985',
+              '+91 8375988895',
               style: AppTextStyle.black_17_400,
             ),
             Dimens.boxHeight5,

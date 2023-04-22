@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
@@ -45,6 +46,7 @@ class _MyAppState extends State<MyApp> {
         designSize: const Size(375, 745),
         builder: (BuildContext context, child) {
           return GetMaterialApp(
+            scrollBehavior: AppScrollBehavior(),
             debugShowCheckedModeBanner: false,
             themeMode: ThemeMode.system,
             getPages: AppPages.pages,
@@ -52,4 +54,13 @@ class _MyAppState extends State<MyApp> {
           );
         });
   }
+}
+
+
+class AppScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_ip_address/get_ip_address.dart';
 import 'package:hive/hive.dart';
+import 'package:platform_device_id/platform_device_id.dart';
 import 'package:video_player/video_player.dart';
+import 'package:http/http.dart'  as http;
 
 
 class HomeController extends GetxController
@@ -14,17 +16,22 @@ class HomeController extends GetxController
 var isIpmatched=true;
   Box? box;
       
-   getIpAdress()async{
-var ipAddress =  IpAddress();
-   dynamic data = await ipAddress.getIpAddress() as String ? ?? '';
-   box!.put('ipAdress', data);
-  if(data=='122.173.29.168'){
- isIpmatched=true;
-  }else
-  {isIpmatched=false;
+  
+
+  String? id='';
+
+  // This function will be called when the floating button is pressed
+  void getInfo() async {
+    // Get device id
+    String? result = await PlatformDeviceId.getDeviceId;
+
+    // Update the UI
+   
+      id = result;
+      print('id -------------  $result');
     
   }
-  }
+
 
  
 
@@ -39,9 +46,9 @@ var ipAddress =  IpAddress();
       vsync: this,
     )..repeat(reverse: true);
     animation = CurvedAnimation(parent: controller!, curve: Curves.easeIn);
-    getIpAdress();
+    getInfo();
     
- 
+     
    
   
   

@@ -21,6 +21,10 @@ class AddImageScreen extends StatelessWidget {
                           final title=controller.titleController.text;
                           final description=controller.descriptionController.text;
                          controller.saveGallery(title:title,description:description, );
+                         controller.titleController.clear();
+                         controller.descriptionController.clear();
+                         controller.imageUrl='';
+                         NavigateTo.homePageScreen();
                         },
                         child: Icon(Icons.check,color: Colors.white,))),
                   ],

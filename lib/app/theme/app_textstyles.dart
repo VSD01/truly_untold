@@ -56,6 +56,12 @@ class AppTextStyle {
     fontSize: 14,
     fontWeight: FontWeight.normal,
   );
+   static TextStyle black_12_400 = GoogleFonts.roboto(
+    color: Colors.black,
+    fontSize: 12,
+    
+    fontWeight: FontWeight.bold,
+  );
 
   static TextStyle grey_17_400 = GoogleFonts.ptSans(
     color: Colors.grey,
@@ -69,10 +75,10 @@ class AppTextStyle {
     fontWeight: FontWeight.normal,
   );
 
-  static TextStyle grey_12_400 = GoogleFonts.ptSans(
+  static TextStyle grey_12_400 = GoogleFonts.roboto(
     color: Colors.grey,
     fontSize: 12,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.bold,
   );
 
  
@@ -95,9 +101,9 @@ class AppTextStyle {
     fontWeight: FontWeight.bold,
   );
 
-   static TextStyle black_50_700 = GoogleFonts.ptSans(
+   static TextStyle black_80_700 = GoogleFonts.ptSans(
     color: Colors.black,
-    fontSize: 50,
+    fontSize: 80,
     fontWeight: FontWeight.w900,
   );
 }
