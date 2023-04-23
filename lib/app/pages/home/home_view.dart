@@ -10,13 +10,14 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(builder: (controller) {
       return Scaffold(
+
         key: controller.drawerPageKey,
         drawer:
             Responsive.isMobile(context) ? mobileAppBarWidget() : Container(),
         appBar: AppBar(
           automaticallyImplyLeading:
               Responsive.isMobile(context) ? true : false,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.black,
           elevation: 0,
           centerTitle: true,
           title: Responsive.isWeb(context) ? webAppBar() : Container(),
@@ -98,7 +99,24 @@ Widget webAppBar() {
               );
               }))
             ),
-           
+            SizedBox(
+              width: 100,
+            ),
+            GestureDetector(
+                onTap: () {
+                  Get.dialog(ServicesScreen());
+                },
+                child: OnHover(builder: ((isHovered) {
+                  return Text(
+                    'Services',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold),
+                  );
+                }))
+            ),
+
           ],
         ),
         Spacer(),

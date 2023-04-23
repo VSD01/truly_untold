@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
@@ -12,6 +11,7 @@ class GalleryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<GalleryController>(builder: (controller) {
       return SafeArea(
+
           child: GestureDetector(
         onTap: () {
           FocusManager.instance.primaryFocus!.unfocus();
@@ -23,7 +23,7 @@ class GalleryWidget extends StatelessWidget {
                 if (snapshot.hasData) {
                   final imageData = snapshot.data!;
                   if (imageData.isEmpty) {
-                    return Container(
+                    return SizedBox(
                       height: Get.height,
                       child: const Center(
                         child: Text('No Images in gallery yet'),
@@ -37,7 +37,7 @@ class GalleryWidget extends StatelessWidget {
                           children: [
                             Stack(
                               children: [
-                                Container(
+                                SizedBox(
                                   height: Dimens.percentHeight(.65),
                                   width: Get.width,
                                 ),
@@ -93,7 +93,7 @@ class GalleryWidget extends StatelessWidget {
                                               .currentState!
                                               .openDrawer();
                                         },
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.cancel_rounded,
                                           color: Colors.white,
                                         )),
@@ -130,188 +130,187 @@ class GalleryWidget extends StatelessWidget {
                                                               context)
                                                       ? 120
                                                       : 8,
-                                              crossAxisCount: Responsive.isMobile(context) ||
-                                                      Responsive.isTablet(context)
-                                                  ? 2
-                                                  : 4,
-                                              mainAxisExtent: Get.height * 0.30),
+                                              crossAxisCount:
+                                                  Responsive.isMobile(context) ||
+                                                          Responsive.isTablet(context)
+                                                      ? 2
+                                                      : 4,
+                                              childAspectRatio: 1 / 1.2),
                                           itemBuilder: (BuildContext context, int index) {
-                                            return GestureDetector(
-                                              onTap: () {
-                                                // NavigateTo.blogDetailsScreen(
-                                                //   headImage:
-                                                //       finalList[index].coverImage,
-                                                //   title: finalList[index].title,
-                                                //   subtitle: finalList[index].subtitle,
-                                                //   article: finalList[index].description,
-                                                // );
-                                              },
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  OnHover(
-                                                      builder: ((isHovered) {
-                                                    return Stack(
-                                                      children: [
-                                                        imageData[index]
-                                                                .imageUrl
-                                                                .isNotEmpty
-                                                            ? Image(
-                                                                image: NetworkImage(
-                                                                    imageData[
-                                                                            index]
-                                                                        .imageUrl),
-                                                                height:
-                                                                    Get.height *
-                                                                        0.20,
-                                                                width:
-                                                                    Get.width,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              )
-                                                            : Container(),
-                                                        isHovered
-                                                            ? GestureDetector(
-                                                                onTap: () {
-                                                                  Get.dialog(
-                                                                    GestureDetector(
-                                                                      onTap:
-                                                                          () {
-                                                                        Get.back();
-                                                                      },
-                                                                      child:
-                                                                          Scaffold(
-                                                                        backgroundColor:
-                                                                            Colors.transparent,
-                                                                        body:
-                                                                            BackdropFilter(
-                                                                          filter: ImageFilter.blur(
-                                                                              sigmaX: 15.0,
-                                                                              sigmaY: 15.0),
+                                            return Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                OnHover(builder: ((isHovered) {
+                                                  return Stack(
+                                                    children: [
+                                                      imageData[index]
+                                                              .imageUrl
+                                                              .isNotEmpty
+                                                          ? Image(
+                                                              image: NetworkImage(
+                                                                  imageData[
+                                                                          index]
+                                                                      .imageUrl),
+                                                              height:
+                                                                  Get.height *
+                                                                      0.20,
+                                                              width: Get.width,
+                                                              fit: BoxFit.cover,
+                                                            )
+                                                          : Container(),
+                                                      isHovered
+                                                          ? GestureDetector(
+                                                              onTap: () {
+                                                                Get.dialog(
+                                                                  GestureDetector(
+                                                                    onTap: () {
+                                                                      Get.back();
+                                                                    },
+                                                                    child:
+                                                                        Scaffold(
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      body:
+                                                                          BackdropFilter(
+                                                                        filter: ImageFilter.blur(
+                                                                            sigmaX:
+                                                                                15.0,
+                                                                            sigmaY:
+                                                                                15.0),
+                                                                        child:
+                                                                            Container(
+                                                                          padding:
+                                                                              const EdgeInsets.symmetric(horizontal: 100),
                                                                           child:
-                                                                              Container(
-                                                                            padding:
-                                                                                const EdgeInsets.symmetric(horizontal: 100),
+                                                                              Center(
                                                                             child:
-                                                                                Center(
-                                                                              child: Column(
-                                                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                                                children: [
-                                                                                  imageData[index].imageUrl.isEmpty
-                                                                                      ? Container()
-                                                                                      : Image(
-                                                                                          image: NetworkImage(imageData[index].imageUrl),
-                                                                                          height: Get.height / 2,
-                                                                                          width: Get.width / 2,
-                                                                                        ),
-                                                                                  SizedBox(
-                                                                                    height: Get.height * 0.005,
-                                                                                  ),
-                                                                                  imageData[index].title.isEmpty
-                                                                                      ? Container()
-                                                                                      : Text(
-                                                                                          imageData[index].title.capitalizeFirst!.trim(),
-                                                                                          style: Responsive.isMobile(context) || Responsive.isTablet(context) ? AppTextStyle.white_14_700 : AppTextStyle.white_17_700,
-                                                                                        ),
-                                                                                  SizedBox(
-                                                                                    height: Get.height * 0.005,
-                                                                                  ),
-                                                                                  imageData[index].description.isEmpty
-                                                                                      ? Container()
-                                                                                      : Text(
-                                                                                          imageData[index].description.trim(),
-                                                                                          style: Responsive.isMobile(context) || Responsive.isTablet(context) ? AppTextStyle.white_14_700 : AppTextStyle.white_17_400,
-                                                                                        ),
-                                                                                  SizedBox(
-                                                                                    height: Get.height * 0.03,
-                                                                                  ),
-                                                                                  GestureDetector(
-                                                                                    onTap: () => Get.back(),
-                                                                                    child: Container(
-                                                                                      alignment: Alignment.center,
-                                                                                      height: 50,
-                                                                                      width: Get.width / 3,
-                                                                                      decoration: BoxDecoration(
-                                                                                        border: Border.all(color: Colors.white),
-                                                                                        borderRadius: BorderRadius.circular(20),
+                                                                                Column(
+                                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                                              children: [
+                                                                                imageData[index].imageUrl.isEmpty
+                                                                                    ? Container()
+                                                                                    : Image(
+                                                                                        image: NetworkImage(imageData[index].imageUrl),
+                                                                                        height: Get.height / 2,
+                                                                                        width: Get.width / 2,
                                                                                       ),
-                                                                                      child: Text(
-                                                                                        'Close',
-                                                                                        style: AppTextStyle.white_14_700,
+                                                                                SizedBox(
+                                                                                  height: Get.height * 0.005,
+                                                                                ),
+                                                                                imageData[index].title.isEmpty
+                                                                                    ? Container()
+                                                                                    : Text(
+                                                                                        imageData[index].title.capitalizeFirst!.trim(),
+                                                                                        style: Responsive.isMobile(context) || Responsive.isTablet(context) ? AppTextStyle.white_14_700 : AppTextStyle.white_17_700,
                                                                                       ),
+                                                                                SizedBox(
+                                                                                  height: Get.height * 0.005,
+                                                                                ),
+                                                                                imageData[index].description.isEmpty
+                                                                                    ? Container()
+                                                                                    : Text(
+                                                                                        imageData[index].description.trim(),
+                                                                                        style: Responsive.isMobile(context) || Responsive.isTablet(context) ? AppTextStyle.white_14_700 : AppTextStyle.white_17_400,
+                                                                                      ),
+                                                                                SizedBox(
+                                                                                  height: Get.height * 0.03,
+                                                                                ),
+                                                                                GestureDetector(
+                                                                                  onTap: () => Get.back(),
+                                                                                  child: Container(
+                                                                                    alignment: Alignment.center,
+                                                                                    height: 50,
+                                                                                    width: Get.width / 3,
+                                                                                    decoration: BoxDecoration(
+                                                                                      border: Border.all(color: Colors.white),
+                                                                                      borderRadius: BorderRadius.circular(20),
                                                                                     ),
-                                                                                  )
-                                                                                ],
-                                                                              ),
+                                                                                    child: Text(
+                                                                                      'Close',
+                                                                                      style: AppTextStyle.white_14_700,
+                                                                                    ),
+                                                                                  ),
+                                                                                )
+                                                                              ],
                                                                             ),
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                  );
-                                                                },
-                                                                child:
-                                                                    Container(
-                                                                  height:
-                                                                      Get.height *
-                                                                          0.20,
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .center,
-                                                                  color: Colors
-                                                                      .white
-                                                                      .withOpacity(
-                                                                          0.9),
-                                                                  child: Chip(
-                                                                      label:
-                                                                          Text(
-                                                                    'Explore',
-                                                                    style: AppTextStyle
-                                                                        .black_20_700,
-                                                                  )),
-                                                                ),
-                                                              )
-                                                            : SizedBox(),
-                                                      ],
-                                                    );
-                                                  })),
-                                                  SizedBox(
-                                                    height: Get.height * 0.005,
-                                                  ),
-                                                  Text(
-                                                    imageData[index]
-                                                        .title
-                                                        .capitalizeFirst!
-                                                        .trim(),
-                                                    style: Responsive.isMobile(
-                                                                context) ||
-                                                            Responsive.isTablet(
-                                                                context)
-                                                        ? AppTextStyle
-                                                            .black_14_700
-                                                        : AppTextStyle
-                                                            .black_17_700,
-                                                  ),
-                                                  SizedBox(
-                                                    height: Get.height * 0.005,
-                                                  ),
-                                                  Text(
-                                                    imageData[index]
+                                                                  ),
+                                                                );
+                                                              },
+                                                              child: Container(
+                                                                height:
+                                                                    Get.height *
+                                                                        0.20,
+                                                                alignment:
+                                                                    Alignment
+                                                                        .center,
+                                                                color: Colors
+                                                                    .white
+                                                                    .withOpacity(
+                                                                        0.9),
+                                                                child: Chip(
+                                                                    label: Text(
+                                                                  'Explore',
+                                                                  style: AppTextStyle
+                                                                      .black_20_700,
+                                                                )),
+                                                              ),
+                                                            )
+                                                          : SizedBox(),
+                                                    ],
+                                                  );
+                                                })),
+                                                SizedBox(
+                                                  height: Get.height * 0.005,
+                                                ),
+                                                imageData[index].title.isEmpty
+                                                    ? Container()
+                                                    : Text(
+                                                        imageData[index]
+                                                            .title
+                                                            .capitalizeFirst!
+                                                            .trim(),
+                                                        style: Responsive.isMobile(
+                                                                    context) ||
+                                                                Responsive
+                                                                    .isTablet(
+                                                                        context)
+                                                            ? AppTextStyle
+                                                                .black_14_700
+                                                            : AppTextStyle
+                                                                .black_17_700,
+                                                      ),
+                                                SizedBox(
+                                                  height: Get.height * 0.005,
+                                                ),
+                                                imageData[index]
                                                         .description
-                                                        .trim(),
-                                                    style: Responsive.isMobile(
-                                                                context) ||
-                                                            Responsive.isTablet(
-                                                                context)
-                                                        ? AppTextStyle
-                                                            .grey_12_400
-                                                        : AppTextStyle
-                                                            .grey_17_400,
-                                                  ),
-                                                ],
-                                              ),
+                                                        .isEmpty
+                                                    ? Container()
+                                                    : Text(
+                                                        imageData[index]
+                                                            .description
+                                                            .trim(),
+                                                        style: Responsive.isMobile(
+                                                                    context) ||
+                                                                Responsive
+                                                                    .isTablet(
+                                                                        context)
+                                                            ? AppTextStyle
+                                                                .grey_12_400
+                                                            : AppTextStyle
+                                                                .grey_17_400,
+                                                        maxLines: 2,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                      ),
+                                              ],
                                             );
                                           }));
                                 }),
@@ -334,27 +333,29 @@ class GalleryWidget extends StatelessWidget {
 Widget profileAvatar() {
   return GetBuilder<GalleryController>(builder: (controller) {
     return FlipCard(
-     
-     controller: controller.flipController,
-      
-      front:  Container(
-         decoration: BoxDecoration(
-           color: Colors.black,
-           border: Border.all(color: Color(0xffcccccc), width: 5),
-           shape: BoxShape.circle,
-        ),
-         height: Get.height * 0.20,
-         width: Get.width * 0.05,
-         child: Image.asset('assets/logo.png')), back: Container(
-         decoration: BoxDecoration(
-           gradient: LinearGradient(colors: [Color(0xff891316),Color(0xff120203)],begin: Alignment.topCenter,end: Alignment.bottomCenter),
-           border: Border.all(color: Color(0xffcccccc), width: 5),
-           shape: BoxShape.circle,
-        ),
-         height: Get.height * 0.20,
-         width: Get.width * 0.05,
-         child: Image.asset('assets/logo.png')));
-    
+        controller: controller.flipController,
+        front: Container(
+            decoration: BoxDecoration(
+              color: Colors.black,
+              border: Border.all(color: Color(0xffcccccc), width: 5),
+              shape: BoxShape.circle,
+            ),
+            height: Get.height * 0.20,
+            width: Get.width * 0.05,
+            child: Image.asset('assets/logo.png')),
+        back: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Color(0xff891316), Color(0xff120203)],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter),
+              border: Border.all(color: Color(0xffcccccc), width: 5),
+              shape: BoxShape.circle,
+            ),
+            height: Get.height * 0.20,
+            width: Get.width * 0.05,
+            child: Image.asset('assets/logo.png')));
+
     // Container(
     //     decoration: BoxDecoration(
     //       color: Colors.black,

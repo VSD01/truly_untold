@@ -40,7 +40,7 @@ class ContactWidget extends StatelessWidget {
                                       .openDrawer();
                                 },
                                 child: Icon(Icons.cancel_rounded))),
-                        webContactSection(context),
+                        webServicesSection(context),
                         GestureDetector(
                           onTap: () {
                             Get.back();
@@ -51,13 +51,13 @@ class ContactWidget extends StatelessWidget {
                             color: Colors.transparent,
                           ),
                         ),
-                        webContactSection(context),
+                        webServicesSection(context),
                       ],
                     ),
                   )
                 : Row(
                     children: [
-                      Expanded(child: webContactSection(context)),
+                      Expanded(child: webServicesSection(context)),
                       Dimens.boxWidth10,
                       Expanded(
                         flex: 2,
@@ -71,7 +71,7 @@ class ContactWidget extends StatelessWidget {
                         ),
                       ),
                       Dimens.boxWidth10,
-                      Expanded(child: webContactSection(context)),
+                      Expanded(child: webServicesSection(context)),
                     ],
                   ),
           ),
@@ -81,7 +81,7 @@ class ContactWidget extends StatelessWidget {
   }
 }
 
-Widget webContactSection(context) {
+Widget webServicesSection(context) {
   return Container(
     alignment: Alignment.center,
     height: Get.height,
@@ -89,14 +89,14 @@ Widget webContactSection(context) {
     color: Colors.white.withOpacity(0.8),
     child: Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: Responsive.isMobile(context) ? 30 : 70),
+          horizontal: 30),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Shubham Jha',
+              'Contact Us',
               style: AppTextStyle.black_20_700,
             ),
             const Divider(
@@ -120,6 +120,7 @@ Widget webContactSection(context) {
             Text(
               'Professional photographer',
               style: AppTextStyle.black_20_700,
+              textAlign: TextAlign.center,
             ),
             Dimens.boxHeight5,
             Text(

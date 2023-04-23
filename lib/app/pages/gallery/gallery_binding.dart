@@ -5,6 +5,10 @@ class GalleryBinding extends Bindings{
   @override
   void dependencies() {
     Get.lazyPut(() => GalleryController(),fenix: true,);
+
+    Get.lazyPut(() => HomeController(),fenix: true);
   }
+
+
 
 }
