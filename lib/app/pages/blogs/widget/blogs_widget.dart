@@ -103,7 +103,7 @@ class BlogsWidget extends StatelessWidget {
                                       SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisSpacing: 40,
                                     mainAxisSpacing: 40,
-                                    crossAxisCount: 4,
+                                    crossAxisCount: 3,
                                   ),
                                   itemBuilder:
                                       (BuildContext context, int index) {
@@ -175,6 +175,8 @@ class BlogsWidget extends StatelessWidget {
                                           Text(
                                             finalList[index].subtitle,
                                             style: AppTextStyle.grey_17_400,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
                                           ),
                                         ],
                                       ),
@@ -274,6 +276,7 @@ Widget bigBlogScreen({required List user}) {
           Text(
             user[0].subtitle,
             style: AppTextStyle.white_17_400,
+            maxLines: 2,overflow: TextOverflow.ellipsis,
           ),
           SizedBox(
             height: Get.height * 0.02,
@@ -346,9 +349,13 @@ Widget blogList({required List user}) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      user[index].title,
-                      style: AppTextStyle.white_30_700,
+                    FittedBox(
+                      fit:BoxFit.fitWidth,
+
+                      child: Text(
+                        user[index].title,
+                        style: AppTextStyle.white_30_700,
+                      ),
                     ),
                     SizedBox(
                       height : Get.height * 0.01,
@@ -356,6 +363,7 @@ Widget blogList({required List user}) {
                     Text(
                       user[index].subtitle,
                       style: AppTextStyle.white_14_700,
+                      maxLines: 2,overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(
                       height : Get.height  * 0.02,
