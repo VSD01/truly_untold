@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "895080848079",
-    "project_id": "truly-untold",
-    "storage_bucket": "truly-untold.appspot.com"
+    "project_number": "41956516836",
+    "project_id": "truly-untold-14663",
+    "storage_bucket": "truly-untold-14663.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:895080848079:android:3c8a7388eb0a467f9e75ba",
+        "mobilesdk_app_id": "1:41956516836:android:a105045b2c28a61dad5df1",
         "android_client_info": {
           "package_name": "com.example.practise1"
         }
       },
       "oauth_client": [
         {
-          "client_id": "895080848079-27001rsmmui6039tsk1dj7idqudbql17.apps.googleusercontent.com",
+          "client_id": "41956516836-9do0laof5oav45nrp8cjvheolkgl6224.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDbIY3DOf66Z0iOmGGVr8tEKFQGnt4HwKo"
+          "current_key": "AIzaSyA0NzHaWFzPrsa999qyUoAuOVNOXabBX94"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "895080848079-27001rsmmui6039tsk1dj7idqudbql17.apps.googleusercontent.com",
+              "client_id": "41956516836-9do0laof5oav45nrp8cjvheolkgl6224.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

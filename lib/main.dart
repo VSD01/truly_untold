@@ -13,19 +13,16 @@ void main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
-      options: FirebaseOptions(
-        apiKey: "AIzaSyBmgLFmU38xFmnidxeaQsMmZ6OoeSW8WIo",
-        appId: "1:895080848079:web:009cfa81600f87a89e75ba",
-        messagingSenderId: "895080848079",
-        projectId: "truly-untold",
-        storageBucket: "truly-untold.appspot.com",
-      ),
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyDORQ-H7XsrDlIZWKLdC7ZX9h0gnlDYBTE",
+          projectId: "truly-untold-14663",
+          storageBucket: "truly-untold-14663.appspot.com",
+          messagingSenderId: "41956516836",
+          appId: "1:41956516836:web:048f16a90bd167c5ad5df1"),
     );
-      await Hive.initFlutter();
-      await Hive.openBox('ttu');
+    await Hive.initFlutter();
+    await Hive.openBox('ttu');
 
-    
-    
     runApp(const MyApp());
   } catch (e) {
     debugPrint(e.toString());
@@ -55,7 +52,6 @@ class _MyAppState extends State<MyApp> {
         });
   }
 }
-
 
 class AppScrollBehavior extends MaterialScrollBehavior {
   @override
