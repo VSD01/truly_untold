@@ -44,8 +44,8 @@ class AboutWidget extends StatelessWidget {
                             image: 'assets/_VSD8558.jpg',
                             name: 'Vishal Singh Disodia',
                             description:
-                                'Hi there my name is Vishal. Professionally I am a Film maker But'
-                                'here in ttu I and ankur both are doing something really different.'
+                                'Hi there my name is Vishal. Professionally I am a Film maker But here'
+                                ' in ttu I and ankur both are doing something really different.'
                                 ' We are just trying to dig out some unknown facts revolving around'
                                 ' us that nobody knows. So definitely this site is just for you if you'
                                 ' love to know more about your world. '),
@@ -77,7 +77,7 @@ class AboutWidget extends StatelessWidget {
                               image: 'assets/_VSD8558.jpg',
                               name: 'Vishal Singh Disodia',
                               description:
-                                  'Hi there my name is Vishal. Professionally I am a Film maker But'
+                                  'Hi there my name is Vishal. Professionally I am a Film maker But '
                                   'here in ttu I and ankur both are doing something really different.'
                                   ' We are just trying to dig out some unknown facts revolving around'
                                   ' us that nobody knows. So definitely this site is just for you if you'

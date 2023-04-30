@@ -10,7 +10,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(builder: (controller) {
       return Scaffold(
-
         key: controller.drawerPageKey,
         drawer:
             Responsive.isMobile(context) ? mobileAppBarWidget() : Container(),
@@ -51,72 +50,45 @@ Widget webAppBar() {
             SizedBox(
               width: 100,
             ),
-            GestureDetector(
-              onTap: () {
-                NavigateTo.galleryScreen();
-              },
-              child: OnHover(builder: ((isHovered) {
-                return Text(
+            GestureDetector(onTap: () {
+              NavigateTo.galleryScreen();
+            }, child: OnHover(builder: ((isHovered) {
+              return Text(
                 'Gallery',
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 17,
                     fontWeight: FontWeight.bold),
               );
-              }))
-            ),
+            }))),
             SizedBox(
               width: 100,
             ),
-            GestureDetector(
-              onTap: () {
-                NavigateTo.blogsScreen();
-              },
-              child: OnHover(builder: ((isHovered) {
-                return Text(
+            GestureDetector(onTap: () {
+              NavigateTo.blogsScreen();
+            }, child: OnHover(builder: ((isHovered) {
+              return Text(
                 'Blog',
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 17,
                     fontWeight: FontWeight.bold),
               );
-              }))
-            ),
+            }))),
             SizedBox(
               width: 100,
             ),
-            GestureDetector(
-              onTap: () {
-                Get.dialog(ContactScreen());
-              },
-              child: OnHover(builder: ((isHovered) {
-                return Text(
-                'Contact',
+            GestureDetector(onTap: () {
+              Get.dialog(ServicesScreen());
+            }, child: OnHover(builder: ((isHovered) {
+              return Text(
+                'Services',
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 17,
                     fontWeight: FontWeight.bold),
               );
-              }))
-            ),
-            SizedBox(
-              width: 100,
-            ),
-            GestureDetector(
-                onTap: () {
-                  Get.dialog(ServicesScreen());
-                },
-                child: OnHover(builder: ((isHovered) {
-                  return Text(
-                    'Services',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold),
-                  );
-                }))
-            ),
-
+            }))),
           ],
         ),
         Spacer(),

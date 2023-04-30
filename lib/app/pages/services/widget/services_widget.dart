@@ -90,48 +90,51 @@ Widget servicesList(context, {required List<String> item}) {
     alignment: Alignment.center,
     height: Get.height,
     width: Get.width,
-    color: Colors.white.withOpacity(0.8),
+    // color: Colors.white.withOpacity(0.8),
+    color: Colors.white,
     child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30),
-        child: ListView.separated(
-            shrinkWrap: true,
-            itemBuilder: (BuildContext context, int index) {
-              return Card(
-                elevation: 3,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                child: Container(
-                  alignment: Alignment.center,
-                  decoration:  BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    gradient: LinearGradient(
-                        colors: [Color(0xff891316), Color(0xff120203)],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      item[index],
-                      style: AppTextStyle.white_14_700,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(
-                height: 20,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 2),
-                  child: VerticalDivider(
-                    color: Colors.black,
-                    thickness: 1,
-                  ),
-                ),
-              );
-            },
-            itemCount: servicesSlot1.length)),
+        child:Image.asset('assets/26690.jpg'),
+        // ListView.separated(
+        //     shrinkWrap: true,
+        //     itemBuilder: (BuildContext context, int index) {
+        //       return Card(
+        //         elevation: 3,
+        //         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        //         child: Container(
+        //           alignment: Alignment.center,
+        //           decoration:  BoxDecoration(
+        //             borderRadius: BorderRadius.circular(15),
+        //             gradient: LinearGradient(
+        //                 colors: [Color(0xff891316), Color(0xff120203)],
+        //                 begin: Alignment.topCenter,
+        //                 end: Alignment.bottomCenter),
+        //           ),
+        //           child: Padding(
+        //             padding: EdgeInsets.all(10),
+        //             child: Text(
+        //               item[index],
+        //               style: AppTextStyle.white_14_700,
+        //               textAlign: TextAlign.center,
+        //             ),
+        //           ),
+        //         ),
+        //       );
+        //     },
+        //     separatorBuilder: (BuildContext context, int index) {
+        //       return SizedBox(
+        //         height: 20,
+        //         child: Padding(
+        //           padding: EdgeInsets.symmetric(vertical: 2),
+        //           child: VerticalDivider(
+        //             color: Colors.black,
+        //             thickness: 1,
+        //           ),
+        //         ),
+        //       );
+        //     },
+        //     itemCount: servicesSlot1.length)
+            ),
   );
 }
 

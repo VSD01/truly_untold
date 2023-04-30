@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:practise1/app/app.dart';
-import 'package:practise1/app/pages/home/home.dart';
+
 
 class HomeWidget extends StatelessWidget {
   const HomeWidget({super.key});
@@ -23,7 +23,8 @@ class HomeWidget extends StatelessWidget {
               
               Padding(
                 padding: EdgeInsets.symmetric(horizontal:  Responsive.isMobile(context) ? 30 : 0),
-                child: Column(
+                child: 
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                      Responsive.isMobile(context)
@@ -46,7 +47,7 @@ class HomeWidget extends StatelessWidget {
                     ///Bio widget here---------
                     bioWidget(context),
                     Dimens.boxHeight10,
-                  ],
+                   ],
                 ),
               ),
             ],
@@ -93,24 +94,21 @@ Widget mainTitleWidget() {
 
 ///Center image widget here
 Widget centerImageWidget() {
-  return Expanded(
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-         Expanded(
-        
-          child: Container(
-              decoration: const BoxDecoration(
-                  image: DecorationImage(image: AssetImage("assets/side new  vishal.jpg")))),
-        ),
-        Expanded(
-        
-          child: Container(
-              decoration: const BoxDecoration(
-                  image: DecorationImage(image: AssetImage("assets/side new  ankur.jpg")))),
-        ),
-      ],
-    ),
+  return Row(
+    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+       Expanded
+       (
+         child: Container(
+             decoration: const BoxDecoration(
+                 image: DecorationImage(image: AssetImage("assets/side new  vishal.jpg")))),
+       ),
+      Expanded(
+        child: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(image: AssetImage("assets/side new  ankur.jpg")))),
+      ),
+    ],
   );
 }
 

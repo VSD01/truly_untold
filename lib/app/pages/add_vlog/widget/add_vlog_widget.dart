@@ -51,7 +51,7 @@ class AddVlogWidget extends StatelessWidget {
                       SizedBox(
                         width: 10,
                       ),
-                       pickImageWidget(
+                      pickImageWidget(
                           text: 'Image 2',
                           widget: controller.ImageUrl2.isEmpty
                               ? Text(
@@ -131,8 +131,11 @@ class AddVlogWidget extends StatelessWidget {
                       focusedBorder: InputBorder.none,
                     ),
                   ),
-                   TextFormField(
-                    maxLines: 10,
+                  TextFormField(
+                    keyboardType: TextInputType.multiline,
+                    minLines: 1, //Normal textInputField will be displayed
+                    maxLines: 5,
+                    textInputAction: TextInputAction.next,
                     controller: controller.subtitleController,
                     decoration: const InputDecoration(
                       hintText: 'Subtitle...',
@@ -152,8 +155,6 @@ class AddVlogWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-
-                
                 ],
               ),
             ),
