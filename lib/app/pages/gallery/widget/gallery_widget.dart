@@ -11,7 +11,6 @@ class GalleryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<GalleryController>(builder: (controller) {
       return SafeArea(
-
           child: GestureDetector(
         onTap: () {
           FocusManager.instance.primaryFocus!.unfocus();
@@ -49,7 +48,7 @@ class GalleryWidget extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Image.asset(
-                                          'assets/side new  ankur.jpg',
+                                          'assets/side new  ankur.png',
                                         ),
                                       ),
                                       Expanded(
@@ -62,7 +61,7 @@ class GalleryWidget extends StatelessWidget {
                                       ),
                                       Expanded(
                                         child: Image.asset(
-                                          'assets/side new  vishal.jpg',
+                                          'assets/side new  vishal.png',
                                         ),
                                       ),
                                     ],
@@ -80,25 +79,28 @@ class GalleryWidget extends StatelessWidget {
                                                   : 200),
                                       child: profileAvatar()),
                                 ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(right: 30, top: 30),
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: GestureDetector(
-                                        onTap: () {
-                                          Get.back();
-                                          Get.find<HomeController>()
-                                              .drawerPageKey
-                                              .currentState!
-                                              .openDrawer();
-                                        },
-                                        child: const Icon(
-                                          Icons.cancel_rounded,
-                                          color: Colors.white,
-                                        )),
-                                  ),
-                                ),
+                                Responsive.isMobile(context) ||
+                                        Responsive.isTablet(context)
+                                    ? Padding(
+                                        padding: const EdgeInsets.only(
+                                            right: 30, top: 30),
+                                        child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: GestureDetector(
+                                              onTap: () {
+                                                Get.back();
+                                                Get.find<HomeController>()
+                                                    .drawerPageKey
+                                                    .currentState!
+                                                    .openDrawer();
+                                              },
+                                              child: const Icon(
+                                                Icons.cancel_rounded,
+                                                color: Colors.white,
+                                              )),
+                                        ),
+                                      )
+                                    : Container(),
                               ],
                             ),
                             Dimens.boxHeight10,
@@ -345,7 +347,7 @@ Widget profileAvatar() {
             child: Image.asset('assets/logo.png')),
         back: Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                   colors: [Color(0xff891316), Color(0xff120203)],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter),
@@ -355,15 +357,5 @@ Widget profileAvatar() {
             height: Get.height * 0.20,
             width: Get.width * 0.05,
             child: Image.asset('assets/logo.png')));
-
-    // Container(
-    //     decoration: BoxDecoration(
-    //       color: Colors.black,
-    //       border: Border.all(color: Color(0xffcccccc), width: 5),
-    //       shape: BoxShape.circle,
-    //     ),
-    //     height: Get.height * 0.20,
-    //     width: Get.width * 0.05,
-    //     child: Image.asset('assets/logo.png'));
   });
 }

@@ -117,6 +117,7 @@ class AddVlogController extends GetxController {
       'id': docUser.id,
       'title': titleController.text,
       'date': DateFormat.yMMMEd().format(DateTime.now()),
+      'timeStamp':DateTime.now(),
       'coverImage': coverImageUrl,
       'image2': ImageUrl2,
       'image3': ImageUrl3,

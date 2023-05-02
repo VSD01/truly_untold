@@ -15,7 +15,7 @@ class GalleryController extends GetxController{
 
 
  Stream<List<GalleryResponse>> allImages() => FirebaseFirestore.instance
-      .collection('gallery')
+      .collection('gallery').orderBy('date',descending: true)
       .snapshots()
       .map((snapShot) => snapShot.docs
           .map((doc) => GalleryResponse.fromJson(doc.data()))

@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:practise1/app/app.dart';
 
-
 class HomeWidget extends StatelessWidget {
   const HomeWidget({super.key});
 
@@ -17,37 +16,39 @@ class HomeWidget extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: [
-               Responsive.isMobile(context)
-                  ? Container():centerImageWidget(),
-             
-              
+              Responsive.isMobile(context) || Responsive.isMobile(context)
+                  ? Container()
+                  : centerImageWidget(),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal:  Responsive.isMobile(context) ? 30 : 0),
-                child: 
-                Column(
+                padding: EdgeInsets.symmetric(
+                    horizontal: Responsive.isMobile(context) ? 30 : 0),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                     Responsive.isMobile(context)
-                  ? Container()
-                  : Expanded(
-                    flex: 2,
-                    child: Image.asset(
-                        'assets/logo croped.png',
-                       scale: 3,
-                      ),
-                  ),
+                    Responsive.isMobile(context)
+                        ? Container()
+                        : Expanded(
+                            flex: 2,
+                            child: Image.asset(
+                              'assets/logo croped.png',
+                              scale: 3,
+                            ),
+                          ),
+
                     ///Logo text here------
                     mainTitleWidget(),
-               Responsive.isMobile(context)
-                  ? centerImageWidget():Container(),
-                   Responsive.isMobile(context)
-                  ?Container(): Spacer(
-                    flex: 1,
-                  ),
+                  
+                   
+                     Responsive.isMobile(context)||Responsive.isMobile(context)
+                        ? Expanded(child: centerImageWidget()):Container(),
+                         Responsive.isMobile(context)||Responsive.isMobile(context)
+                        ?Container(): Spacer(
+                          flex: 1,
+                        ),
                     ///Bio widget here---------
                     bioWidget(context),
                     Dimens.boxHeight10,
-                   ],
+                  ],
                 ),
               ),
             ],
@@ -97,16 +98,17 @@ Widget centerImageWidget() {
   return Row(
     //mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-       Expanded
-       (
-         child: Container(
-             decoration: const BoxDecoration(
-                 image: DecorationImage(image: AssetImage("assets/side new  vishal.jpg")))),
-       ),
       Expanded(
         child: Container(
             decoration: const BoxDecoration(
-                image: DecorationImage(image: AssetImage("assets/side new  ankur.jpg")))),
+                image: DecorationImage(
+                    image: AssetImage("assets/side new  vishal.png")))),
+      ),
+      Expanded(
+        child: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/side new  ankur.png")))),
       ),
     ],
   );
@@ -115,24 +117,20 @@ Widget centerImageWidget() {
 ////Bio widget for web
 Widget bioWidget(BuildContext context) {
   return Expanded(
-   
-    child: 
-    
-    Container(
+    child: Container(
       width: Dimens.percentHeight(.50),
       child: AnimatedTextKit(
         isRepeatingAnimation: false,
         animatedTexts: [
           TypewriterAnimatedText(
-             'Let\'s take a bite out of the terrible, harsh truth. While there is no requirement for' 
-             'proof when it comes to the truth, many individuals nevertheless refuse to accept it at face value. Let\'s explore the world together,'
-              'looking for funny and intriguing information. \n\n If you are interested in hearing' 
+              'Let\'s take a bite out of the terrible, harsh truth. While there is no requirement for'
+              'proof when it comes to the truth, many individuals nevertheless refuse to accept it at face value. Let\'s explore the world together,'
+              'looking for funny and intriguing information. \n\n If you are interested in hearing'
               'more about our universe, "THE TRULY UNTOLD," then you should subscribe to our Channel right away.',
               textStyle: TextStyle(
                 color: Colors.white,
                 fontSize: Responsive.isMobile(context) ? 12 : 15,
                 fontWeight: FontWeight.w500,
-               
               ),
               speed: Duration(milliseconds: 60),
               textAlign: TextAlign.center),

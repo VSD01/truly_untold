@@ -19,7 +19,7 @@ class BlogsController extends GetxController {
   var pageController=PageController();
   /// 
   Stream<List<BlogsResponse>> allBlogs() => FirebaseFirestore.instance
-      .collection('blogs')
+      .collection('blogs').orderBy('timeStamp',descending: true,)
       .snapshots()
       .map((snapShot) => snapShot.docs
           .map((doc) => BlogsResponse.fromJson(doc.data()))
