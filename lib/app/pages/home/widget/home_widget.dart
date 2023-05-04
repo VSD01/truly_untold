@@ -123,10 +123,8 @@ Widget bioWidget(BuildContext context) {
         isRepeatingAnimation: false,
         animatedTexts: [
           TypewriterAnimatedText(
-              'Let\'s take a bite out of the terrible, harsh truth. While there is no requirement for'
-              'proof when it comes to the truth, many individuals nevertheless refuse to accept it at face value. Let\'s explore the world together,'
-              'looking for funny and intriguing information. \n\n If you are interested in hearing'
-              'more about our universe, "THE TRULY UNTOLD," then you should subscribe to our Channel right away.',
+              'Let\'s bite into the horrible, unforgiving truth. Even if there is no legal necessity for proof of the fact, many people will not take it at face value. Together, let\'s travel the globe in search of amusing and fascinating facts. If you wish to learn more about our universe, "THE TRULY UNTOLD," you should immediately subscribe to our channel.',
+
               textStyle: TextStyle(
                 color: Colors.white,
                 fontSize: Responsive.isMobile(context) ? 12 : 15,
