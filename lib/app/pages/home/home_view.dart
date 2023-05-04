@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practise1/app/app.dart';
-import 'package:practise1/app/pages/admin/admin_view.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

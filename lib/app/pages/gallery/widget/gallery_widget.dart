@@ -48,7 +48,7 @@ class GalleryWidget extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Image.asset(
-                                          'assets/side new  ankur.png',
+                                          'assets/sidenewankur.png',
                                         ),
                                       ),
                                       Expanded(
@@ -61,7 +61,7 @@ class GalleryWidget extends StatelessWidget {
                                       ),
                                       Expanded(
                                         child: Image.asset(
-                                          'assets/side new  vishal.png',
+                                          'assets/sidenewvishal.png',
                                         ),
                                       ),
                                     ],

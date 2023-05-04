@@ -102,13 +102,13 @@ Widget centerImageWidget() {
         child: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/side new  vishal.png")))),
+                    image: NetworkImage("https://drive.google.com/uc?export=view&id=1bbkFj2Ogn_k1HErAiP2GuKi9pEkj4zfI")))),
       ),
       Expanded(
         child: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/side new  ankur.png")))),
+                    image: NetworkImage("https://drive.google.com/uc?export=view&id=1ULDGk7cCYhXIRMFXGCvjwTnkzfKjEFfy")))),
       ),
     ],
   );

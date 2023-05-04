@@ -44,6 +44,7 @@ class _MyAppState extends State<MyApp> {
         builder: (BuildContext context, child) {
           return GetMaterialApp(
             scrollBehavior: AppScrollBehavior(),
+            title: 'the truly untold'.capitalize.toString(),
             debugShowCheckedModeBanner: false,
             themeMode: ThemeMode.system,
             getPages: AppPages.pages,
