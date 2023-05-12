@@ -128,18 +128,19 @@ class BlogsWidget extends StatelessWidget {
                                           OnHover(builder: ((isHovered) {
                                             return Stack(
                                               children: [
-                                                Image(
-                                                  image: NetworkImage(
-                                                      finalList[index]
-                                                          .coverImage),
-                                                  height: Get.height * 0.20,
-                                                  width: Get.width,
-                                                  fit: BoxFit.cover,
-                                                ),
+                                            CachedNetworkImage(
+
+
+                                            imageUrl: finalList[index]
+                                                .coverImage,
+
+
+                                            ),
+
                                                 isHovered
                                                     ? Container(
                                                         height:
-                                                            Get.height * 0.20,
+                                                            Get.height * 0.28,
                                                         alignment:
                                                             Alignment.center,
                                                         color: Colors.white
@@ -162,7 +163,7 @@ class BlogsWidget extends StatelessWidget {
                                             finalList[index].title,
                                             style: AppTextStyle.black_20_700,
                                           ),
-                                            SizedBox(
+                                          SizedBox(
                                             height: Get.height * 0.005,
                                           ),
                                           Text(
@@ -236,12 +237,12 @@ Widget bigBlogScreen({required List user}) {
                           user[0].image3,
                           user[0].image4,
                         ];
-                        return Container(
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: CachedNetworkImageProvider(
-                                      bigContainerImages[index]))),
+                        return CachedNetworkImage(
+
+
+                          imageUrl: user[index].coverImage,
+
+
                         );
                       }),
                 ),
@@ -276,7 +277,8 @@ Widget bigBlogScreen({required List user}) {
           Text(
             user[0].subtitle,
             style: AppTextStyle.white_17_400,
-            maxLines: 2,overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
           SizedBox(
             height: Get.height * 0.02,
@@ -308,7 +310,7 @@ Widget blogList({required List user}) {
             );
           },
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+
             children: [
               Expanded(
                   flex: 1,
@@ -316,15 +318,14 @@ Widget blogList({required List user}) {
                     builder: (isHovered) {
                       return Stack(
                         children: [
-                          Container(
+                          CachedNetworkImage(
                             height: Get.height * 0.15,
-                            decoration: BoxDecoration(
-                                color: Colors.grey,
-                                image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image:
-                                        NetworkImage(user[index].coverImage))),
+
+
+                            imageUrl: user[index].coverImage,
+
                           ),
+
                           isHovered
                               ? Container(
                                   height: Get.height * 0.15,
@@ -350,23 +351,23 @@ Widget blogList({required List user}) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FittedBox(
-                      fit:BoxFit.fitWidth,
-
+                      fit: BoxFit.fitWidth,
                       child: Text(
                         user[index].title,
                         style: AppTextStyle.white_30_700,
                       ),
                     ),
                     SizedBox(
-                      height : Get.height * 0.01,
+                      height: Get.height * 0.01,
                     ),
                     Text(
                       user[index].subtitle,
                       style: AppTextStyle.white_14_700,
-                      maxLines: 2,overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(
-                      height : Get.height  * 0.02,
+                      height: Get.height * 0.02,
                     ),
                     Text(
                       user[index].date,

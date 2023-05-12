@@ -16,101 +16,107 @@ class BlogDetailsWidget extends StatelessWidget {
             onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
             child: SingleChildScrollView(
               child: Center(
-                child: Container(
-                  width: Responsive.isMobile(context) ||
+                child: Column(
+                  children: [
+                    Padding(
+                      padding:  Responsive.isMobile(context) ||
                           Responsive.isTablet(context)
-                      ? Get.width
-                      : Get.width / 3,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Dimens.boxHeight5,
-                      Text(
-                        controller.title,
-                        style: AppTextStyle.black_80_700,
-                        maxLines: 2,
-                        textAlign: TextAlign.center,
-                      ),
-                      Dimens.boxHeight5,
-                      Container(
-                        height: Get.height * 0.50,
-                        width: Get.width,
-                        decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            image: DecorationImage(
-                                fit: BoxFit.contain,
-                                image: NetworkImage(controller.coverImage))),
-                      ),
-                      Dimens.boxHeight5,
-                      Text(
-                        controller.date,
-                        style: AppTextStyle.black_12_400,
-                      ),
-                      Dimens.boxHeight5,
-                      Text(
-                        controller.subtitle,
-                        style: AppTextStyle.grey_17_400,
-                      ),
-                      Dimens.boxHeight5,
-                      Dimens.boxHeight5,
-                      Text(
-                        controller.result,
-                        style: AppTextStyle.black_19_400,
-                        textAlign: TextAlign.left,
-                        softWrap: true,
-                      ),
-                      Dimens.boxHeight5,
-                      Column(
+                          ?EdgeInsets.symmetric(horizontal: 20):EdgeInsets.symmetric(horizontal: 450),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Row(
+                          Dimens.boxHeight5,
+                          Text(
+                            controller.title,
+                            style:
+                            Responsive.isMobile(context)||Responsive.isTablet(context)?
+                                AppTextStyle.black_50_700:
+                            AppTextStyle.black_80_700,
+
+                            textAlign: TextAlign.center,
+                          ),
+                          Dimens.boxHeight5,
+                          Container(
+                            height: Get.height * 0.50,
+                            width: Get.width,
+                            decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                image: DecorationImage(
+                                    fit: BoxFit.contain,
+                                    image: NetworkImage(controller.coverImage))),
+                          ),
+                          Dimens.boxHeight5,
+                          Text(
+                            controller.date,
+                            style: AppTextStyle.black_12_400,
+                          ),
+                          Dimens.boxHeight5,
+                          Text(
+                            controller.subtitle,
+                            style: AppTextStyle.grey_17_400,
+
+                          ),
+                          Dimens.boxHeight5,
+                          Dimens.boxHeight5,
+                          Text(
+                            controller.descriptionPara1,
+                            style: AppTextStyle.black_19_400,
+                            textAlign: TextAlign.left,
+                            softWrap: true,
+                          ),
+                          Dimens.boxHeight5,
+                          Column(
                             children: [
-                              controller.image1.toString().isEmpty
+                              Row(
+                                children: [
+                                  controller.image1.toString().isEmpty
+                                      ? Container()
+                                      : Expanded(
+                                          child:
+                                          Image.network(controller.image1,height: Get.height*0.40,),
+
+                                        ),
+                                  Dimens.boxWidth10,
+                                  controller.image2.toString().isEmpty
+                                      ? Container()
+                                      : Expanded(
+                                          child:
+                                          Image.network(controller.image2,height: Get.height*0.40,),
+                                          // Container(
+                                          //   height: Get.height * 0.20,
+                                          //   decoration: BoxDecoration(
+                                          //       color: Colors.grey,
+                                          //       image: DecorationImage(
+                                          //           fit: BoxFit.cover,
+                                          //           image: NetworkImage(
+                                          //               controller.image2))),
+                                          // ),
+                                        ),
+                                ],
+                              ),
+                              Dimens.boxHeight10,
+                              controller.image3.toString().isEmpty
                                   ? Container()
-                                  : Expanded(
-                                      child: Container(
-                                        height: Get.height * 0.20,
-                                        decoration: BoxDecoration(
-                                            color: Colors.grey,
-                                            image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: NetworkImage(
-                                                    controller.image1))),
-                                      ),
-                                    ),
-                              Dimens.boxWidth10,
-                              controller.image2.toString().isEmpty
-                                  ? Container()
-                                  : Expanded(
-                                      child: Container(
-                                        height: Get.height * 0.20,
-                                        decoration: BoxDecoration(
-                                            color: Colors.grey,
-                                            image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: NetworkImage(
-                                                    controller.image2))),
-                                      ),
-                                    ),
+                                  :
+                              Image.network(controller.image3,height: Get.height*0.40,),
+                              // Container(
+                              //
+                              //         decoration: BoxDecoration(
+                              //             color: Colors.grey,
+                              //             image: DecorationImage(
+                              //                 fit: BoxFit.cover,
+                              //                 image:
+                              //                     NetworkImage(controller.image3))),
+                              //       ),
                             ],
                           ),
                           Dimens.boxHeight10,
-                          controller.image3.toString().isEmpty
-                              ? Container()
-                              : Container(
-                                  height: Get.height * 0.20,
-                                  decoration: BoxDecoration(
-                                      color: Colors.grey,
-                                      image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image:
-                                              NetworkImage(controller.image3))),
-                                ),
+
                         ],
                       ),
-                      Dimens.boxHeight10,
-                      const FooterWidget(),
-                    ],
-                  ),
+                    ),
+                    const FooterWidget(),
+                  ],
                 ),
               ),
             ),

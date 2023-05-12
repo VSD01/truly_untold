@@ -101,6 +101,12 @@ class AppTextStyle {
     fontWeight: FontWeight.bold,
   );
 
+  static TextStyle black_50_700 = GoogleFonts.ptSans(
+    color: Colors.black,
+    fontSize: 50,
+    fontWeight: FontWeight.bold,
+  );
+
    static TextStyle black_80_700 = GoogleFonts.ptSans(
     color: Colors.black,
     fontSize: 80,
