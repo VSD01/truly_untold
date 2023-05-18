@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:practise1/app/app.dart';
 
 class AppTextStyle {
   static TextStyle white_17_700 = GoogleFonts.ptSans(
@@ -37,6 +38,13 @@ class AppTextStyle {
     color: Colors.black,
     fontSize: 19,
     fontWeight: FontWeight.normal,
+  );
+
+  static TextStyle black_18_400_1 = GoogleFonts.dmSans(
+    color: Colors.black,
+    fontSize: 18,
+    fontWeight: FontWeight.normal,
+    height: 1.8,
   );
 
   static TextStyle black_14_700 = GoogleFonts.ptSans(
@@ -101,15 +109,21 @@ class AppTextStyle {
     fontWeight: FontWeight.bold,
   );
 
-  static TextStyle black_50_700 = GoogleFonts.ptSans(
+  static TextStyle black_32_700 = GoogleFonts.libreBaskerville(
     color: Colors.black,
-    fontSize: 50,
-    fontWeight: FontWeight.bold,
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
   );
 
    static TextStyle black_80_700 = GoogleFonts.ptSans(
     color: Colors.black,
     fontSize: 80,
+    fontWeight: FontWeight.w900,
+  );
+
+  static TextStyle black_32px_700 = GoogleFonts.ptSans(
+    color: Colors.black,
+    fontSize: Dimens.thirtyTwo,
     fontWeight: FontWeight.w900,
   );
 }

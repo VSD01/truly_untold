@@ -118,20 +118,27 @@ Widget centerImageWidget() {
 Widget bioWidget(BuildContext context) {
   return Container(
     width: Dimens.percentHeight(.50),
-    child: AnimatedTextKit(
-      isRepeatingAnimation: false,
-      animatedTexts: [
-        TypewriterAnimatedText(
-            'Let\'s bite into the horrible, unforgiving truth. Even if there is no legal necessity for proof of the fact, many people will not take it at face value. Together, let\'s travel the globe in search of amusing and fascinating facts. If you wish to learn more about our universe, "THE TRULY UNTOLD," you should immediately subscribe to our channel.',
+    child: Padding(
+      padding: EdgeInsets.only(bottom: 40),
+      child: AnimatedTextKit(
+        isRepeatingAnimation: false,
+        animatedTexts: [
+          TypewriterAnimatedText(
+              'Let\'s bite into the horrible, unforgiving truth. Even if there is no'
+                  ' legal necessity for proof of the fact, many people will not take it at '
+                  'face value. Together, let\'s travel the globe in search of amusing and'
+                  ' fascinating facts. If you wish to learn more about our universe,'
+                  ' "THE TRULY UNTOLD," you should immediately subscribe to our channel.',
 
-            textStyle: TextStyle(
-              color: Colors.white,
-              fontSize: Responsive.isMobile(context) ? 12 : 15,
-              fontWeight: FontWeight.w500,
-            ),
-            speed: Duration(milliseconds: 60),
-            textAlign: TextAlign.center),
-      ],
-    ),
+              textStyle: TextStyle(
+                color: Colors.white,
+                fontSize: Responsive.isMobile(context) ? 12 : 15,
+                fontWeight: FontWeight.w500,
+              ),
+              speed: Duration(milliseconds: 60),
+              textAlign: TextAlign.center),
+        ],
+      ),
+    )
   );
 }

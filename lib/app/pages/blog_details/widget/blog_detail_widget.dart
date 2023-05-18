@@ -27,24 +27,25 @@ class BlogDetailsWidget extends StatelessWidget {
                         children: [
                           Dimens.boxHeight5,
                           Text(
-                            controller.title,
+                            controller.title.toString().capitalizeFirst.toString(),
                             style:
                             Responsive.isMobile(context)||Responsive.isTablet(context)?
-                                AppTextStyle.black_50_700:
-                            AppTextStyle.black_80_700,
+                                AppTextStyle.black_32_700:
+                            AppTextStyle.black_32_700,
 
                             textAlign: TextAlign.center,
                           ),
                           Dimens.boxHeight5,
-                          Container(
-                            height: Get.height * 0.50,
-                            width: Get.width,
-                            decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                image: DecorationImage(
-                                    fit: BoxFit.contain,
-                                    image: NetworkImage(controller.coverImage))),
-                          ),
+                          Image.network(controller.coverImage),
+                          // Container(
+                          //
+                          //   width: Get.width,
+                          //   decoration: BoxDecoration(
+                          //       color: Colors.transparent,
+                          //       image: DecorationImage(
+                          //           fit: BoxFit.contain,
+                          //           image: NetworkImage(controller.coverImage))),
+                          // ),
                           Dimens.boxHeight5,
                           Text(
                             controller.date,
@@ -60,45 +61,25 @@ class BlogDetailsWidget extends StatelessWidget {
                           Dimens.boxHeight5,
                           Text(
                             controller.descriptionPara1,
-                            style: AppTextStyle.black_19_400,
+                            style: AppTextStyle.black_18_400_1,
                             textAlign: TextAlign.left,
                             softWrap: true,
                           ),
                           Dimens.boxHeight5,
                           Column(
                             children: [
-                              Row(
-                                children: [
-                                  controller.image1.toString().isEmpty
-                                      ? Container()
-                                      : Expanded(
-                                          child:
-                                          Image.network(controller.image1,height: Get.height*0.40,),
-
-                                        ),
-                                  Dimens.boxWidth10,
-                                  controller.image2.toString().isEmpty
-                                      ? Container()
-                                      : Expanded(
-                                          child:
-                                          Image.network(controller.image2,height: Get.height*0.40,),
-                                          // Container(
-                                          //   height: Get.height * 0.20,
-                                          //   decoration: BoxDecoration(
-                                          //       color: Colors.grey,
-                                          //       image: DecorationImage(
-                                          //           fit: BoxFit.cover,
-                                          //           image: NetworkImage(
-                                          //               controller.image2))),
-                                          // ),
-                                        ),
-                                ],
-                              ),
+                              controller.image1.toString().isEmpty
+                                  ? Container()
+                                  : Image.network(controller.image1,),
+                              Dimens.boxHeight10,
+                              controller.image2.toString().isEmpty
+                                  ? Container()
+                                  : Image.network(controller.image2,),
                               Dimens.boxHeight10,
                               controller.image3.toString().isEmpty
                                   ? Container()
                                   :
-                              Image.network(controller.image3,height: Get.height*0.40,),
+                              Image.network(controller.image3,),
                               // Container(
                               //
                               //         decoration: BoxDecoration(

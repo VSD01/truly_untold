@@ -90,6 +90,8 @@ class BlogsWidget extends StatelessWidget {
                             ),
                           ),
                           Dimens.boxHeight10,
+
+                          ///last blogs gridview ///
                           Container(
                               padding: EdgeInsets.symmetric(
                                   horizontal:
@@ -101,24 +103,29 @@ class BlogsWidget extends StatelessWidget {
                                   itemCount: finalList.length,
                                   gridDelegate:
                                       SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisSpacing: 40,
-                                    mainAxisSpacing: 40,
-                                    crossAxisCount: 3,
-                                  ),
+                                          crossAxisSpacing: 40,
+                                          mainAxisSpacing: 40,
+                                          crossAxisCount: Responsive.isMobile(
+                                                      context) ||
+                                                  Responsive.isTablet(context)
+                                              ? 2
+                                              : 3,
+                                          mainAxisExtent: 400),
                                   itemBuilder:
                                       (BuildContext context, int index) {
                                     return GestureDetector(
                                       onTap: () {
                                         NavigateTo.blogDetailsScreen(
-                                          headImage: user[0].coverImage,
-                                          title: user[0].title,
-                                          subtitle: user[0].subtitle,
+                                          headImage:
+                                              finalList[index].coverImage,
+                                          title: finalList[index].title,
+                                          subtitle: finalList[index].subtitle,
                                           articlePara1:
-                                              user[0].descriptionPara1,
-                                          image1: user[0].image2,
-                                          date: user[0].date,
-                                          image2: user[0].image3,
-                                          image3: user[0].image4,
+                                              finalList[index].descriptionPara1,
+                                          image1: finalList[index].image2,
+                                          date: finalList[index].date,
+                                          image2: finalList[index].image3,
+                                          image3: finalList[index].image4,
                                         );
                                       },
                                       child: Column(
@@ -128,15 +135,10 @@ class BlogsWidget extends StatelessWidget {
                                           OnHover(builder: ((isHovered) {
                                             return Stack(
                                               children: [
-                                            CachedNetworkImage(
-
-
-                                            imageUrl: finalList[index]
-                                                .coverImage,
-
-
-                                            ),
-
+                                                CachedNetworkImage(
+                                                  imageUrl: finalList[index]
+                                                      .coverImage,
+                                                ),
                                                 isHovered
                                                     ? Container(
                                                         height:
@@ -173,11 +175,13 @@ class BlogsWidget extends StatelessWidget {
                                           SizedBox(
                                             height: Get.height * 0.005,
                                           ),
-                                          Text(
-                                            finalList[index].subtitle,
-                                            style: AppTextStyle.grey_17_400,
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
+                                          Expanded(
+                                            child: Text(
+                                              finalList[index].subtitle,
+                                              style: AppTextStyle.grey_17_400,
+maxLines: 4,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -238,11 +242,7 @@ Widget bigBlogScreen({required List user}) {
                           user[0].image4,
                         ];
                         return CachedNetworkImage(
-
-
                           imageUrl: user[index].coverImage,
-
-
                         );
                       }),
                 ),
@@ -310,7 +310,6 @@ Widget blogList({required List user}) {
             );
           },
           child: Row(
-
             children: [
               Expanded(
                   flex: 1,
@@ -320,12 +319,8 @@ Widget blogList({required List user}) {
                         children: [
                           CachedNetworkImage(
                             height: Get.height * 0.15,
-
-
                             imageUrl: user[index].coverImage,
-
                           ),
-
                           isHovered
                               ? Container(
                                   height: Get.height * 0.15,
@@ -350,24 +345,28 @@ Widget blogList({required List user}) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    FittedBox(
-                      fit: BoxFit.fitWidth,
-                      child: Text(
-                        user[index].title,
-                        style: AppTextStyle.white_30_700,
-                      ),
+                    Text(
+                      user[index].title,
+                      style: Responsive.isMobile(context) ||
+                              Responsive.isTablet(context)
+                          ? AppTextStyle.white_17_700
+                          : AppTextStyle.white_30_700,
                     ),
+                    Container(
+                      height: user[index].subtitle.toString().isEmpty
+                          ? 0
+                          : Get.height * 0.01,
+                    ),
+                    user[index].subtitle.toString().isEmpty
+                        ? Container()
+                        : Text(
+                            user[index].subtitle,
+                            style: AppTextStyle.white_14_700,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                     SizedBox(
                       height: Get.height * 0.01,
-                    ),
-                    Text(
-                      user[index].subtitle,
-                      style: AppTextStyle.white_14_700,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    SizedBox(
-                      height: Get.height * 0.02,
                     ),
                     Text(
                       user[index].date,
